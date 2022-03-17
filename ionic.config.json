@@ -1,0 +1,7 @@
+{
+  "name": "wefid",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
