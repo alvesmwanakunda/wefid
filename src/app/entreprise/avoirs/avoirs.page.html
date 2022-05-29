@@ -1,0 +1,131 @@
+<!--<ion-header [translucent]="true">
+  <ion-toolbar>
+   <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button mat-button (click)="detailClient()"><mat-icon>keyboard_backspace</mat-icon></button>
+      </ion-col>
+      <ion-col>
+        <ion-title>
+           Mes avoirs
+        </ion-title>
+      </ion-col>
+    </ion-row>
+   </ion-grid>
+  </ion-toolbar>
+</ion-header>-->
+
+<ion-content  [fullscreen]="true" class="ion-padding">
+
+  <div (click)="detailClient()">
+    <button mat-stroked-button class="btn-back"><mat-icon style="color: #000000;">keyboard_arrow_left</mat-icon></button>
+    <ion-text style="color:#323635;font-weight: 700;"><p class="txt-title">Mes avoirs</p></ion-text>
+  </div>
+
+  <div style="padding-top: 40px;">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="twitter-like">
+            <mat-spinner 
+                class="track" 
+                mode="determinate" 
+                value="100"
+                diameter="60"
+            >
+            </mat-spinner>
+            <mat-spinner color="warn" mode="determinate" diameter="60" [value]="depense"></mat-spinner>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <p style="font-size: 12px">Dépensé</p>
+            <p class="nbre-dd">{{depense}}</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="twitter-like">
+            <mat-spinner 
+                class="track" 
+                mode="determinate" 
+                value="100"
+                diameter="60"
+            >
+            </mat-spinner>
+            <mat-spinner color="primary" mode="determinate" diameter="60" [value]="encaisse"></mat-spinner>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <p style="font-size: 12px">Encaissé</p>
+            <p class="nbre-d">{{encaisse}}</p>
+          </div>
+        </ion-col>
+      </ion-row> 
+    </ion-grid> 
+  </div>
+
+  <div>
+
+    <mat-tab-group dynamicHeight mat-align-tabs="center">
+      <mat-tab label="Dépensé">
+        <div class="example-small-box mat-elevation-z4">
+          <ion-list>
+
+            <ion-card class="card-hd" *ngFor="let dep of depenses">
+              <ion-card-content class="content-card">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      <img src="data:image/png;base64,{{dep?.entreprise?.image}}" class="imgproduit">
+                    </ion-col>
+                    <ion-col>
+                      <div style="position: relative;bottom: 6px;">
+                        <span class="titleinfo">{{dep?.creation | date: "MMM dd YYYY,THH:MM"}}</span>
+                        <p class="titleclient">{{dep?.entreprise?.nom}}</p>
+                      </div>
+                    </ion-col>
+                    <ion-col>
+                      <p style="text-align: right;padding-top: 23px;" class="titlenumber"><span style="color: #FF0024;">-</span> {{dep?.montant}}</p>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-card-content>
+            </ion-card>
+
+          </ion-list>
+        </div>
+      </mat-tab>
+      <mat-tab label="Encaissé">
+        <div class="example-small-box mat-elevation-z4">
+          <ion-list>
+
+            <ion-card class="card-hd" *ngFor="let en of encaisses">
+              <ion-card-content class="content-card" (click)="openDialog(en._id)">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      <img src="data:image/png;base64,{{en?.entreprise?.image}}" class="imgproduit">
+                    </ion-col>
+                    <ion-col>
+                      <div style="position: relative;bottom: 6px;">
+                        <span class="titleinfo">{{en?.creation | date: "MMM dd YYYY,THH:MM"}}</span>
+                        <p class="titleclient">{{en?.entreprise?.nom}}</p>
+                      </div>
+                    </ion-col>
+                    <ion-col>
+                      <p style="text-align: right;padding-top: 23px;" class="titlenumber"><span style="color: #52E34F;">+</span> {{en?.montant}}</p>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-card-content>
+            </ion-card>
+
+          </ion-list>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+  </div>
+
+</ion-content>

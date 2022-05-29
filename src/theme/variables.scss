@@ -76,11 +76,72 @@
   --ion-color-light-tint: #f5f6f9;
 }
 
+/*ion-content{
+  --background: red;
+}*/
+
+.text-barre {
+  text-align: center;
+  border-bottom: 1px solid #E1E1E1;
+}
+
+.text-barre span {
+  position: relative;
+  top: 10px;
+  z-index: 1000;
+  background: rgb(255, 255, 255);
+  padding: 4px;
+  font-size: 13px;
+}
+
+.btnlogin{
+  background-color: rgb(0, 0, 0) !important;
+  color: #fff !important;
+  font-size: 12px;
+}
+
+.mat-select-value-text {
+  color: #000000 !important;
+}
+
+.mat-tab-label .mat-tab-label-content{
+  color: #243665 !important;
+  font-size: 12px !important;
+  text-align: center !important;
+  //font-weight: normal;
+}
+
+.mat-tab-label, .mat-tab-link {
+  color: rgba(0,0,0,.87) !important;
+}
+
+.mat-tab-link:not(.mat-tab-label-active):focus {
+  background: none !important;
+  color: red !important;
+}
+
+.headImg{
+  position: relative;
+  //height: 300px;
+  //background-image: linear-gradient(#ff9d2f, #ff6126);
+}
+
+.headImg::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 10%;
+  width: 100%;
+  background: #ffffff;
+  border-top-left-radius: 45px 45px;
+  border-top-right-radius: 45px 45px;
+  user-select: none;
+}
+
+/*
 @media (prefers-color-scheme: dark) {
-  /*
-   * Dark Colors
-   * -------------------------------------------
-   */
+  
 
   body {
     --ion-color-primary: #428cff;
@@ -147,10 +208,7 @@
     --ion-color-light-tint: #383a3e;
   }
 
-  /*
-   * iOS Dark Theme
-   * -------------------------------------------
-   */
+  
 
   .ios body {
     --ion-background-color: #000000;
@@ -190,11 +248,43 @@
     --ion-toolbar-border-color: var(--ion-color-step-250);
   }
 
+  .mat-tab-label .mat-tab-label-content{
+    color: #ffffff !important;
+    font-size: 14px !important;
+    text-align: center !important;
+  }
 
-  /*
-   * Material Design Dark Theme
-   * -------------------------------------------
-   */
+  .ios .headImg::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 10%;
+    width: 100%;
+    background: #000000;
+    border-top-left-radius: 45px 45px;
+    border-top-right-radius: 45px 45px;
+    user-select: none;
+  }
+
+  .md .headImg::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 10%;
+    width: 100%;
+    background: #121212;
+    border-top-left-radius: 45px 45px;
+    border-top-right-radius: 45px 45px;
+    user-select: none;
+  }
+
+  .list-md{
+    background: transparent !important;
+  }
+
+
 
   .md body {
     --ion-background-color: #121212;
@@ -233,4 +323,43 @@
 
     --ion-card-background: #1e1e1e;
   }
+
+  .text-barre {
+    text-align: center;
+    border-bottom: 1px solid #E1E1E1;
+  }
+  
+  .text-barre span {
+    position: relative;
+    top: 10px;
+    z-index: 1000;
+    background: #121212;
+    padding: 4px;
+    font-size: 13px;
+  }
+  .btnlogin{
+    background-color: #fff !important;
+    color: #000000 !important;
+    font-size: 12px;}
 }
+*/
+
+.mat-select-value-text {
+    color: #ffffff !important;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: #5CD137 !important;
+    height: 5px !important;
+    border-radius: 4px 4px 0px 0px !important;
+}
+
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: 33px;
+  left: 0;
+  width: 100%;
+}
+
+
+
+  @import "bootstrap";

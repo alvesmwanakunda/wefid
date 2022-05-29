@@ -1,20 +1,46 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <div class="slideContent">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        
+          <img src="assets/images/purchase.png" class="imgSlide">
+       
+          <p class="titleSlide">Désormais vos achats sont récompensés</p>
+          <div>
+            <p class="subtitle">
+              Vos achats se convertissent en points pour vous offrir de nombreux avantages. Désormais votre fidélité est recompensé
+            </p>
+          </div>
+      </div><!--slide-->
+    </ion-slide>
+    <ion-slide>
+      <div class="slideContent">
+          <img src="assets/images/surprise.png" class="imgSlide"> 
+          <p class="titleSlide">Collectez le maximum de points et profitez de nombreux avantages</p>
+          <div>
+            <p class="subtitle">
+              A chaque achat chez l’un de nos partenaires présentez votre carte de fidélité numérique afin de collecter des points
+            </p>
+          </div>
+      </div><!--slide-->
+    </ion-slide>
+    <ion-slide>
+      <div class="slideContent">
+          <img src="assets/images/informative.png" class="imgSlide">
+          <p class="titleSlide">Restez informez des bons plans</p>
+          <div>
+            <p class="subtitle">
+              Trouver tout ce que vous avez besoin de savoir sur vos boutiques préférées. Soyez les premiers à être informé des bons 
+            </p>
+          </div>
+      </div><!--slide-->
+    </ion-slide>
+  </ion-slides>
+  <div align="center">
+    <button mat-button [routerLink]="'/login'" class="titleSign">Se connecter</button>
   </div>
+  <ion-button expand="block" [routerLink]="'/visite'">Découvrir l'application wefid</ion-button>
+  <!--Créer une carte de fidélité-->
 </ion-content>

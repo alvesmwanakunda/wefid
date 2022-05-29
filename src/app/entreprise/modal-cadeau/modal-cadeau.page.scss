@@ -1,0 +1,91 @@
+.content-card{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    padding-top: 2px !important;
+    position: relative;
+    top: 2px;
+    height: 76px;
+}
+
+.card-hd{
+    height: 14% !important;
+    border-radius: 20px;
+  }
+
+/*.imgproduit{
+    background-color: #fff;
+    height: 60px;
+    width: 60px;
+    border-radius: 50px;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    position: relative;
+    bottom: 5px;
+}*/
+
+.imgproduit{
+  height: 65px;
+  width: 65px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 5px rgb(241, 240, 240);
+  position: relative;
+  bottom: 5px;
+}
+
+.titleinfo{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 7px;
+}
+
+.titleclient{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    width: 68px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .titleclientp{
+    font-style: normal;
+    //font-weight: 700;
+    font-size: 12px;
+    width: 68px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #49C120;
+  }
+
+  .titleclientprod{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    width: 89px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #363853;
+  }
+
+  .btnmodal{
+    color: #52E34F;
+    height: 26px;
+    font-size: 12px;
+    font-weight: normal;
+    border-radius: 20px;
+  }
+
+  .btn-back{
+    background: #52E34F;
+    border-radius: 14px;
+  }
+
+  .txt-title{
+    text-align: center;
+    position: relative;
+    bottom: 28px;
+  }

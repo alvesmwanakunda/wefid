@@ -1,0 +1,228 @@
+.imgentreprise{
+    background-color: #fff;
+    height: 130px;
+    width: 135px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 100px;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+
+}
+
+.imgcontent{
+    height: 65%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    position: relative;
+    top: 23px;
+}
+
+.title_entreprise{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 30px;
+    /* identical to box height */
+    letter-spacing: 0.75px;
+}
+
+.info_entreprise{
+    border-radius: 10%;
+    background: #F8F8F8;
+    margin: 1px;  
+}
+
+.card-content-mde {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    //line-height: 1.5;
+  }
+
+  .phone-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    position: relative;
+    top: 2px;
+  }
+
+  .mat-divider {
+    border-top-color: rgba(125, 124, 124, 0.12) !important;
+  }
+
+  .limitTextHeight {
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.btnShow{
+    position: relative;
+    right: 14px;
+    bottom: 23px;
+}
+
+.example-margin {
+    margin: 0 10px;
+  }
+
+  :host ::ng-deep .track circle{       
+    stroke-opacity: 0.2 !important;
+}
+
+.twitter-like{
+    .mat-progress-spinner{
+        display: inline;
+    }
+}
+
+.nbre-d{
+    font-size: 12px;
+    font-weight: bold;
+    color: #06C2B3;
+    position: relative;
+    bottom: 15px;
+}
+
+.nbre-dd{
+    font-size: 12px;
+    font-weight: bold;
+    color: #F91A1D;
+    position: relative;
+    bottom: 15px;
+}
+
+.content-card{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    padding-top: 2px !important;
+    position: relative;
+    top: 2px;
+    height: 76px;
+}
+
+.card-hd{
+    height: 14% !important;
+  }
+
+  .imgproduit{
+    height: 65px;
+    width: 65px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 5px rgb(241, 240, 240);
+    position: relative;
+    bottom: 5px;
+  }
+
+.titleinfo{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    color: #BDBDBD;
+}
+
+.titleclient{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    width: 106px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #243665;
+  }
+
+  .titleclientp{
+    font-style: normal;
+    //font-weight: 700;
+    font-size: 12px;
+    width: 68px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #49C120;
+  }
+
+  .titleclientprod{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    width: 68px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    
+  }
+
+  .imgno{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+}
+
+ion-img::part(image){
+  border-radius: 10px !important;
+}
+
+.btn-back{
+    position: absolute;
+    top: 30px;
+    margin-left: 10px;
+    background: #ffffff;
+    border-radius: 14px;
+}
+
+.col-depense{
+  background: #FFFFFF;
+  box-shadow: 0px 2.13px 14.9px rgba(41, 69, 255, 0.06);
+  border-radius: 10px;
+  margin: 2px;
+}
+
+.img-r1{
+    width: 23px;
+    position: relative;
+    bottom: 8px;
+    right: 2px;
+}
+
+.title1{
+  color: #000;
+    font-size: 10px;
+    position: relative;
+    bottom: 7px;
+}
+
+.number1{
+    color: #000;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.titlenumber{
+  color: #243665;
+  font-style: normal;
+  font-weight: 500;
+  //font-size: 12px;
+}
+.dnumber{
+  margin-left: 38px;
+  position: relative;
+  bottom: 7px;
+}
+
+.dnumber1{
+  margin-left: 42px;
+  position: relative;
+  bottom: 7px;
+}
+

@@ -1,0 +1,99 @@
+
+
+
+ion-tab-button.tab-selected {
+    ion-icon, ion-label {
+      color: #52E34F !important;
+      --ion-color-base: #52E34F !important;
+    }
+}
+
+ion-tab-button:hover {
+  ion-icon, ion-label {
+      color: #52E34F !important;
+      --ion-color-base:#52E34F !important;
+  }
+}
+
+ion-tab-button{
+  ion-icon, ion-label {
+      color: #ffffff !important;
+      --ion-color-base:#ffffff !important;
+  }
+}
+
+ion-tab-bar, ion-tab-button{
+    //background-color: #ffffff;
+    --background: transparent;
+    --border: 0;
+}
+
+.tabbar {
+  justify-content: center;
+}
+
+.tab-button {
+  max-width: 200px;
+}
+
+ion-fab-button{
+  --background: #243665 !important;
+}
+
+.icon-button {
+  background: #243665 !important;
+  color: white;
+  //border-radius: 50%!important;
+}
+
+:host ::ng-deep .tabs-inner {
+  position: unset!important;
+  contain: size style!important;
+}
+
+/*.bottom-tab-bar {
+  --background: transparent;
+  --border: 0;
+}
+
+ion-tab-button {
+  --background: #243665;
+}*/
+
+.button-center {
+  --background: transparent!important;
+  ion-icon {
+    height: 50px;
+    width: 50px;
+    font-size: 75px;
+  }
+}
+
+ion-tab-bar {
+  &:before {
+    box-shadow: 0 339px 0 300px #243665;
+    position: absolute;
+    margin-top: -124px;
+    padding: 56px;
+    border-radius: 55% 55%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    content: "";
+  }
+}
+
+.inner-left-btn {
+  border-top-left-radius: 20px 20px;
+}
+
+.inner-right-btn {
+  border-top-right-radius: 20px 20px;
+}
+
+.inner-center-btn {
+  position: absolute;
+  left: calc(52% - 34px); // position your button in the center
+  bottom: 49px; // position your button slightly above the half bezel
+  font-size: 55px;
+  --background: transparent;
+}

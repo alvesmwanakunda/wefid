@@ -1,0 +1,115 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+   <ion-grid>
+    <ion-row>
+      <ion-col (click)="openDialog()">
+        <ion-img src="assets/images/Qr.png" style="width: 34px;height: 32px;"></ion-img>
+      </ion-col><!--ion-col-->
+      <ion-col>
+        <ion-title>
+          Accueil
+        </ion-title>
+      </ion-col><!--ion-col-->
+      <ion-col>
+        <ion-icon id="size-button" name="qr-code" style="width: 34px;height: 28px;float: right;"></ion-icon>
+      </ion-col><!--ion-col-->
+    </ion-row>
+   </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Accueil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <ion-img src="assets/images/radi.jpeg"></ion-img>
+    </ion-slide>
+    <ion-slide>
+      <ion-img src="assets/images/auchan.jpeg"></ion-img>
+    </ion-slide>
+  </ion-slides>
+ 
+    <div style="font-size: 13px;padding-top: 10px;">
+        <ion-col size="12" class="ion-margin-bottom">
+          <ion-item fill="outline" mode="md">
+            <ion-input type="text" autocomplete="off" autocorrect="off" placeholder="Rechercher" (keyup)="applyFilter($event)"  #input></ion-input>
+          </ion-item>
+        </ion-col>
+    </div><!--div-->
+
+    <div>
+
+      <ion-slides pager="false" [options]="slideOpt">
+        <ion-slide>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col  (click)="filterClick('Supermarché')">
+                <div class="roundCat">
+                  <img src="assets/images/cart.png" class="imgcat">
+                </div>
+                <p class="textcat">Supermarché</p>
+              </ion-col>
+              <ion-col (click)="filterClick('Hotel')">
+                <div class="roundCat">
+                  <img src="assets/images/hotel.png" class="imgcat">
+                </div>
+                <p class="textcat">Hotel</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid> 
+          
+        </ion-slide><!---->
+
+        <ion-slide>
+
+          <ion-grid>
+            <ion-row>
+            <ion-col (click)="filterClick('Sport')">
+                <div class="roundCat">
+                  <img src="assets/images/sport.png" class="imgcat">
+                </div>
+                <p class="textcat">Sport</p>
+              </ion-col>
+              <ion-col (click)="filterClick('Restaurant')">
+                <div class="roundCat">
+                  <img src="assets/images/restaurant.png" class="imgcat">
+                </div>
+                <p class="textcat">Restaurant</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid> 
+          
+        </ion-slide><!---->
+      </ion-slides>
+
+    </div><!--div-->
+
+    <ion-list >
+      <ion-card class="card-hd"  *ngFor="let entreprise of entreprises">
+        <ion-card-content class="content-card">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <img src="data:image/png;base64,{{entreprise.image}}" class="imgproduit">
+              </ion-col>
+              <ion-col>
+                <span class="titleinfo">{{entreprise?.creation | date: "MMM dd YYYY,THH:MM"}}</span>
+                <p class="titleclient">{{entreprise?.nom}}</p>
+                <span class="titleinfo" style="position: relative;bottom: 8px;">{{entreprise?.adresse}}</span>
+              </ion-col>
+              <ion-col>
+                <p style="text-align: right;padding-top: 23px;" class="titlenumber"><span style="color: #52E34F;">+</span> 0</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+
+</ion-content>

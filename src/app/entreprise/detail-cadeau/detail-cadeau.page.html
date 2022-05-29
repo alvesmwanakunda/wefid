@@ -1,0 +1,15 @@
+<div  class="imgentreprise">
+  <img src="data:image/png;base64,{{cadeau?.produit?.photo}}" class="imgcontent">
+</div>
+<div align="center" style="padding-top: 10px;">
+  <p class="title_entreprise"><span matBadge="{{cadeau?.point}}" matBadgeColor="accent" matBadgeOverlap="false">{{cadeau?.produit?.nom}}</span></p>
+  <p class="title_entreprisep">Point {{cadeau?.typesPoint?.nom}}</p>
+</div>
+<div style="position: relative;bottom: 30px;">
+  <p style="font-weight: bold;padding-top: 6px;">Détail</p>
+  <p style="font-size: 10px;">
+      {{cadeau?.produit?.description}}
+  </p>
+</div>
+
+

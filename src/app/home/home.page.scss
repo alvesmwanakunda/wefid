@@ -25,3 +25,59 @@
 #container a {
   text-decoration: none;
 }
+
+ion-slides{
+  height: 80%;
+}
+
+.circle {
+  height: 150px;
+  width: 150px;
+  background-color: #F9F9F9;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.titleSlide{
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 28px;
+text-align: center;
+//@include: #393F45;
+}
+
+.subtitle{
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+text-align: center;
+}
+
+.slideContent{
+  //position: absolute;
+  //top: 10%;
+}
+.imgSlide{
+  margin: 10px auto 20px;
+  display: block;
+}
+
+.titleSign{
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+text-align: center;
+letter-spacing: 0.03em;
+color: #102142;
+text-transform: none;
+}
+
+ion-button {
+  --background: linear-gradient(91.85deg, #0C1733 2.48%, #236CBD 58.09%);
+  --color: #fff;
+  --border-radius:10px !important;
+  height: 55px;
+  text-transform: none;
+}

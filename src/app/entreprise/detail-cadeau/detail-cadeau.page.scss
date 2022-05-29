@@ -1,0 +1,51 @@
+.imgentreprise{
+    background-color: #fff;
+    height: 130px;
+    width: 135px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 100px;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+
+}
+
+.pts{
+    background-color: rgb(244, 30, 101);
+    height: 50px;
+    width: 50px; 
+    border-radius: 100px;   
+}
+
+.imgcontent{
+    height: 65%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    position: relative;
+    top: 23px;
+}
+
+.title_entreprise{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 30px;
+    /* identical to box height */
+    letter-spacing: 0.75px;
+}
+.title_entreprisep{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 30px;
+    /* identical to box height */
+    letter-spacing: 0.75px;
+    position: relative;
+    bottom: 26px;
+    color: #06C2B3;
+}

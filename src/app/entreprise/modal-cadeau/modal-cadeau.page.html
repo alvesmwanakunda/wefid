@@ -1,0 +1,35 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div (click)="dismiss()">
+    <button mat-stroked-button class="btn-back"><mat-icon style="color: #000000;">keyboard_arrow_left</mat-icon></button>
+    <ion-text style="color:#323635;font-weight: 700;"><p class="txt-title">Liste des cadeaux</p></ion-text>
+  </div>
+
+  <div>
+    <ion-list>
+      <ion-card class="card-hd" *ngFor="let cd of cadeaux">
+        <ion-card-content class="content-card" (click)="openDialogCadeau(cd?._id)">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <img src="data:image/png;base64,{{cd?.produit?.photo}}" class="imgproduit">
+              </ion-col>
+              <ion-col>
+                <div style="position: relative;top:7px;">
+                  <p class="titleclientprod">{{cd?.produit?.nom}}</p>
+                  <p style="color:#49C120;">Détail</p>
+                  <!--<button mat-raised-button class="btnmodal" (click)="openDialogCadeau(cd?._id)"><span style="position:relative;bottom:5px;">Détail</span></button>-->
+                </div>
+              </ion-col>
+              <ion-col style="text-align: right;">
+                <p style="text-align: right;color: #363853;" class="titlenumber">{{cd?.point}} <small>Pts</small></p>
+                <p style="text-align: right;color: #243665;">{{cd?.typesPoint?.nom}}</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+
+</ion-content>
