@@ -181,4 +181,12 @@ export class EntreprisePage implements OnInit {
     this.router.navigate(["tabs/avoirs",this.idEntreprise]);
   }
 
+  doRefresh(event) {
+    console.log('Begin async operation');
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 200);
+  }
+
 }

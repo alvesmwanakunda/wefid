@@ -19,13 +19,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!--<ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Accueil</ion-title>
-    </ion-toolbar>
-  </ion-header>-->
   
- 
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 
     <div>
       <p style="font-size: 32px;font-weight: 700;margin-left: 15px">Bonjour</p>
@@ -65,25 +62,25 @@
     <div>
         <ion-row>
           <ion-col  class="ion-no-padding" (click)="filterClick('All')">
-            <div class="roundCatGreen">
+            <div class="roundCat" [ngClass]="status=='All' ? 'roundCatGreen' : 'roundCat'">
               <img src="assets/images/store.png" class="imgcat">
             </div>
             <p style="font-size: 11px;text-align: center;">Visite récente</p>
           </ion-col>
           <ion-col class="ion-no-padding"  (click)="filterClick('Hotel')">
-            <div class="roundCat">
+            <div class="roundCat" [ngClass]="status=='Hotel' ? 'roundCatGreen' : 'roundCat'">
               <img src="assets/images/hotel.png" class="imgcat">
             </div>
             <p style="font-size: 11px;text-align: center;">Hotel</p>
           </ion-col>
           <ion-col class="ion-no-padding"  (click)="filterClick('Sport')">
-            <div class="roundCat">
+            <div class="roundCat" [ngClass]="status=='Sport' ? 'roundCatGreen' : 'roundCat'">
               <img src="assets/images/sport.png" class="imgcat">
             </div>
             <p style="font-size: 11px;text-align: center;">Sport</p>
           </ion-col>
           <ion-col class="ion-no-padding"  (click)="filterClick('Restaurant')">
-            <div class="roundCat">
+            <div class="roundCat" [ngClass]="status=='Restaurant' ? 'roundCatGreen' : 'roundCat'">
               <img src="assets/images/restaurant.png" class="imgcat">
             </div>
             <p style="font-size: 11px;text-align: center;">Restaurant</p>
@@ -101,28 +98,32 @@
 
     <div style="padding-top: 20px;" *ngIf="operations.length==0 && isEntreprise">
 
-      <ion-list>
-         <ion-row *ngFor="let entreprise of entreprises">
-            <ion-col size="3">
-              <img src="data:image/png;base64,{{entreprise.image}}" class="imgproduit">
-            </ion-col><!--col-->
-            <ion-col size="9">
-              <ion-item>
-                <div>
-                  <p class="titleclient">{{entreprise?.nom}}</p>
-                  <span class="titleinfo" style="position: relative;bottom: 20px;">{{entreprise?.adresse}}</span>
-                  <br/>
-                  <span class="titleinfo" style="position: relative;bottom: 15px;">{{entreprise?.creation | date: "MMM dd YYYY,THH:MM"}}</span>
-                </div>
-                <div class="dnumber">
-                  <p style="font-size: 13px;" class="titlenumber"><span style="color: #52E34F;">+</span> 0</p>
-                </div>
 
-              </ion-item>
-            </ion-col><!--col-->
-         </ion-row>
+      <ion-list>
+            <ion-row *ngFor="let entreprise of entreprises">
+              <ion-col size="3" (click)="detailEntreprise(entreprise?._id)">
+                <img src="data:image/png;base64,{{entreprise.image}}" class="imgproduit" *ngIf="entreprise.image">
+                <img src="assets/images/icon.png" class="imgproduit" *ngIf="!entreprise.image">
+              </ion-col><!--col-->
+              <ion-col size="9" (click)="detailEntreprise(entreprise?._id)">
+                <ion-item>
+                  <div>
+                    <p class="titleclient">{{entreprise?.nom}}</p>
+                    <span class="titleinfo" style="position: relative;bottom: 20px;" *ngIf="entreprise?.adresse">{{entreprise?.adresse}}</span>
+                    <br *ngIf="entreprise?.adresse" />
+                    <span class="titleinfo" style="position: relative;bottom: 15px;">{{entreprise?.creation | date: "MMM dd YYYY,THH:MM"}}</span>
+                  </div>
+                  <div class="dnumber">
+                    <p style="font-size: 13px;" class="titlenumber"><span style="color: #52E34F;">+</span> 0</p>
+                  </div>
+  
+                </ion-item>
+              </ion-col><!--col-->
+            </ion-row>
+            <br/>
       </ion-list>
 
+    
     </div><!--Liste sans visite-->
 
     <div style="padding-top: 20px;" *ngIf="operations.length>=1 && !isEntreprise">
@@ -130,14 +131,15 @@
       <ion-list>
          <ion-row *ngFor="let operation of operations">
             <ion-col size="3" (click)="detailEntreprise(operation?.entreprise?._id)">
-              <img src="data:image/png;base64,{{operation?.entreprise.image}}" class="imgproduit">
+              <img src="data:image/png;base64,{{operation?.entreprise.image}}" class="imgproduit" *ngIf="operation?.entreprise.image">
+              <img src="assets/images/icon.png" class="imgproduit" *ngIf="!operation?.entreprise.image">
             </ion-col><!--col-->
             <ion-col size="9" (click)="detailEntreprise(operation?.entreprise?._id)">
               <ion-item>
                 <div>
                   <p class="titleclient">{{operation?.entreprise?.nom}}</p>
-                  <span class="titleinfo" style="position: relative;bottom: 20px;">{{operation?.entreprise?.adresse}}</span>
-                  <br/>
+                  <span class="titleinfo" style="position: relative;bottom: 20px;" *ngIf="operation?.entreprise?.adresse">{{operation?.entreprise?.adresse}}</span>
+                  <br *ngIf="operation?.entreprise?.adresse"/>
                   <span class="titleinfo" style="position: relative;bottom: 15px;">{{operation?.entreprise?.creation | date: "MMM dd YYYY, hh:mm"}}</span>
                 </div>
                 <div class="dnumber">
@@ -147,6 +149,7 @@
               </ion-item>
             </ion-col><!--col-->
          </ion-row>
+         <br/>
       </ion-list>
 
     </div><!--Liste sans visite-->

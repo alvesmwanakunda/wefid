@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
 import { DashboardPage } from './dashboard.page';
 import { EntrepriseService } from '../shared/services/entreprise.service';
+//import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   imports: [
@@ -13,7 +14,7 @@ import { EntrepriseService } from '../shared/services/entreprise.service';
     FormsModule,
     IonicModule,
     DashboardPageRoutingModule,
-    SharedModule
+    SharedModule,
   ],
   declarations: [DashboardPage],
   providers:[EntrepriseService]

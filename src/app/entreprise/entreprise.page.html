@@ -23,6 +23,10 @@
 
 <ion-content [fullscreen]="true">
 
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <div class="ion-padding">
 
     <ion-img  src="assets/images/sl1.jpg"></ion-img>
@@ -113,17 +117,20 @@
           <div class="ion-padding" align="center"  *ngIf="depenses==0">
             <img src="assets/images/no.png" class="imgno"/>
             <p style="font-size: 11px;text-align: center;">Vous ne disposez pas de points de fidélité pour ce commerce</p>
+            <br/><br/>
           </div>
 
           <ion-list  *ngIf="depenses!=0">
                   <ion-row *ngFor="let dep of depenses">
                     <ion-col size="3">
-                      <img src="data:image/png;base64,{{dep?.produit?.photo}}" class="imgproduit">
+                      <img src="data:image/png;base64,{{dep?.produit?.photo}}" class="imgproduit" *ngIf="dep?.produit?.photo">
+                      <img src="assets/images/icon.png" class="imgproduit" *ngIf="!dep?.produit?.photo">
                     </ion-col>
                     <ion-col size="9">
                       <ion-item>
                         <div>
-                          <p class="titleclient">{{dep?.produit?.nom}}</p>
+                          <p class="titleclient" *ngIf="dep?.produit?.nom">{{dep?.produit?.nom}}</p>
+                          <p class="titleclient" *ngIf="!dep?.produit?.nom">Livraison</p>
                           <span class="titleinfo">{{dep?.creation | date: "dd MMM YYYY,THH:MM"}}</span>
                         </div>
                         <div class="dnumber">
@@ -132,6 +139,7 @@
                       </ion-item>
                     </ion-col>
                   </ion-row>
+                  <br/><br/>
           </ion-list>
         </div>
       </mat-tab>
@@ -141,6 +149,7 @@
           <div class="ion-padding" align="center"  *ngIf="encaisses==0">
             <img src="assets/images/no.png" class="imgno"/>
             <p style="font-size: 11px;text-align: center;">Vous ne disposez pas de points de fidélité pour ce commerce</p>
+            <br/><br/>
           </div>
 
           <ion-list *ngIf="encaisses!=0">
@@ -155,11 +164,12 @@
                     <span class="titleinfo">{{en?.creation | date: "dd MMM YYYY,THH:MM"}}</span>
                   </div>
                   <div class="dnumber">
-                    <p style="font-size: 13px;" class="titlenumber"><span style="color: #52E34F;">-</span> {{en?.point}}</p>
+                    <p style="font-size: 13px;" class="titlenumber"><span style="color: #52E34F;">+</span> {{en?.point}}</p>
                   </div>
                 </ion-item>
               </ion-col>
             </ion-row>
+            <br/><br/>
            </ion-list>
         </div>
       </mat-tab>
@@ -168,13 +178,15 @@
           <ion-list> 
                  <ion-row *ngFor="let cd of cadeaux">
                     <ion-col size="3">
-                      <img src="data:image/png;base64,{{cd?.produit?.photo}}" class="imgproduit">
+                      <img src="data:image/png;base64,{{cd?.produit?.photo}}" class="imgproduit" *ngIf="cd?.produit?.photo">
+                      <img src="assets/images/icon.png" class="imgproduit" *ngIf="!cd?.produit?.photo">
                     </ion-col>
                     <ion-col size="9">
 
                       <ion-item>
                         <div>
-                          <p class="titleclient">{{cd?.produit?.nom}}</p>
+                          <p class="titleclient" *ngIf="cd?.produit?.nom">{{cd?.produit?.nom}}</p>
+                          <p class="titleclient" *ngIf="!cd?.produit?.nom">Livraison</p>
                           <span class="titleclientp">Disponible</span>
                         </div>
                         <div class="dnumber1">
@@ -196,6 +208,7 @@
                     </ion-col>
                   
                   </ion-row>
+                  <br/> <br/>
           </ion-list>
         </div>
       </mat-tab>

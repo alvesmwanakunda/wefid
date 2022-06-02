@@ -6,7 +6,8 @@ import {
   FormControl,
   FormGroup,
   Validators
-} from '@angular/forms'
+} from '@angular/forms';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -35,6 +36,7 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
+    public loadingController: LoadingController
   ) {
     this.loginFormErrors = {
       emailorphone: {},
@@ -87,6 +89,8 @@ export class LoginPage implements OnInit {
   }
 
   onLogin(): void {
+    this.presentLoading();
+    
     this.onLoadForm = true;
     if (this.password.value == "" || this.emailorphone.value == "") {
       this.testValidation = true;
@@ -116,6 +120,16 @@ export class LoginPage implements OnInit {
 
    signOut(): void {
     if (this.loggedIn) this.authService.logout();
+  }
+
+  async presentLoading(){
+    const loading = await this.loadingController.create({
+      message:'Please wait...',
+      duration:2000
+    });
+    await loading.present();
+    const {role,data}=await loading.onDidDismiss();
+    console.log('Loading dismessed!');
   }
 
 }

@@ -34,8 +34,12 @@ export class EntrepriseService {
    }
 
    getLenghtEncaisse(idEntreprise){
-    return this.http.get(`${environment.BASE_API_URL}/encaisse/length/${idEntreprise}`)
+    return this.http.get(`${environment.BASE_API_URL}/operation/encaisse/length/${idEntreprise}`)
    }
+
+   /*getLenghtEncaisse(idEntreprise){
+    return this.http.get(`${environment.BASE_API_URL}/encaisse/length/${idEntreprise}`)
+   }*/
 
    listCadeauClient(idEntreprise){
     return this.http.get(`${environment.BASE_API_URL}/cadeau/visite/${idEntreprise}`)

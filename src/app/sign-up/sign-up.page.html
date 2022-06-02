@@ -28,19 +28,19 @@
           <div style="font-size: 13px;">
        
            <mat-form-field appearance="outline" class="example-full-width">
-             <mat-label class="labelFrom">Nom <small style="color: rgb(255, 0, 144);">*</small></mat-label>
+             <mat-label class="labelFrom">Nom </mat-label>
              <input matInput formControlName="nom" placeholder="Nom" required>
              <mat-icon matPrefix>person</mat-icon>
            </mat-form-field>
        
            <mat-form-field appearance="outline" class="example-full-width">
-             <mat-label class="labelFrom">Prénom <small style="color: rgb(255, 0, 144);">*</small></mat-label>
+             <mat-label class="labelFrom">Prénom </mat-label>
              <input matInput formControlName="prenom" placeholder="Prénom" required>
              <mat-icon matPrefix>person</mat-icon>
            </mat-form-field>
        
            <mat-form-field appearance="outline" class="example-full-width">
-             <mat-label class="labelFrom">Numéro de téléphone <small style="color: rgb(255, 0, 144);">*</small></mat-label>
+             <mat-label class="labelFrom">Numéro de téléphone </mat-label>
              <input matInput formControlName="emailorphone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$|(\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+)" required placeholder="Numéro de téléphone">
              <mat-icon matPrefix>phone_iphone</mat-icon>
            </mat-form-field>
@@ -49,7 +49,7 @@
            </div>
            
            <mat-form-field appearance="outline" class="example-full-width">
-             <mat-label class="labelFrom">Adresse <small style="color: rgb(255, 0, 144);">*</small></mat-label>
+             <mat-label class="labelFrom">Adresse </mat-label>
              <input matInput formControlName="adresse" placeholder="Adresse" required>
              <mat-icon matPrefix>person_pin</mat-icon>
            </mat-form-field>
@@ -76,7 +76,7 @@
           <div style="font-size: 13px;">
        
            <mat-form-field appearance="outline" class="example-full-width">
-             <mat-label class="labelFrom">Genre <small style="color: rgb(255, 0, 144);">*</small></mat-label>
+             <mat-label class="labelFrom">Genre </mat-label>
              <mat-select formControlName="genre" style="color: rgb(179, 177, 177);" required>
               <mat-option value="Femme">Femme</mat-option>
               <mat-option value="Homme">Homme</mat-option>
@@ -85,13 +85,13 @@
            </mat-form-field>
        
            <mat-form-field appearance="outline" class="example-full-width">
-             <mat-label class="labelFrom">Age <small style="color: rgb(255, 0, 144);">*</small></mat-label>
+             <mat-label class="labelFrom">Age</mat-label>
              <input type="date" matInput formControlName="age" placeholder="Age" required>
              <mat-icon matPrefix>cake</mat-icon>
            </mat-form-field>
        
            <mat-form-field appearance="outline" class="example-full-width">
-             <mat-label class="labelFrom">Mot de passe <small style="color: rgb(255, 0, 144);">*</small></mat-label>
+             <mat-label class="labelFrom">Mot de passe </mat-label>
              <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required>
              <mat-icon matPrefix>lock</mat-icon>
              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
@@ -109,7 +109,7 @@
            </div>
        
            <mat-form-field appearance="outline" class="example-full-width">
-             <mat-label class="labelFrom">Confirmer mot de passe <small style="color: rgb(255, 0, 144);">*</small></mat-label>
+             <mat-label class="labelFrom">Confirmer mot de passe </mat-label>
              <input matInput formControlName="confirmpassword" [type]="hideC ? 'password' : 'text'">
              <mat-icon matPrefix>lock</mat-icon>
              <button mat-icon-button matSuffix (click)="hideC = !hideC" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideC">

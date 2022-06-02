@@ -1,14 +1,14 @@
 .imgentreprise{
-    background-color: #fff;
-    height: 130px;
-    width: 135px;
+    //background-color: #fff;
+    //height: 130px;
+    //width: 135px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 100px;
-    -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
-    -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
-    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    //border-radius: 100px;
+   // -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+   // -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+   // box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
 
 }
 
@@ -49,3 +49,12 @@
     bottom: 26px;
     color: #06C2B3;
 }
+
+.imgproduit{
+    height: 65px;
+    width: 65px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 5px rgb(241, 240, 240);
+    position: relative;
+    bottom: 5px;
+  }

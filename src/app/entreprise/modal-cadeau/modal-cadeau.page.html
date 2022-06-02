@@ -12,11 +12,13 @@
           <ion-grid>
             <ion-row>
               <ion-col>
-                <img src="data:image/png;base64,{{cd?.produit?.photo}}" class="imgproduit">
+                <img src="data:image/png;base64,{{cd?.produit?.photo}}" class="imgproduit" *ngIf="cd?.produit?.photo">
+                <img src="assets/images/icon.png" class="imgproduit" *ngIf="!cd?.produit?.photo">
               </ion-col>
               <ion-col>
                 <div style="position: relative;top:7px;">
-                  <p class="titleclientprod">{{cd?.produit?.nom}}</p>
+                  <p class="titleclientprod" *ngIf="cd?.typeCadeau!='Livraison'">{{cd?.produit?.nom}}</p>
+                  <p class="titleclientprod" *ngIf="cd?.typeCadeau=='Livraison'">({{cd?.nombreLivraison}}) Livraison</p>
                   <p style="color:#49C120;">Détail</p>
                   <!--<button mat-raised-button class="btnmodal" (click)="openDialogCadeau(cd?._id)"><span style="position:relative;bottom:5px;">Détail</span></button>-->
                 </div>
