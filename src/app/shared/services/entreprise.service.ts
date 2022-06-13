@@ -16,6 +16,10 @@ export class EntrepriseService {
    getAllEntrepriseVisiter(){
     return this.http.get(`${environment.BASE_API_URL}/entreprises/visiter`)
    }
+
+   getEntrepriseByIdVisiter(idEntreprise){
+    return this.http.get(`${environment.BASE_API_URL}/visiter/entreprise/id/${idEntreprise}`)
+  }
    
    getOperationByClient(){
      return this.http.get(`${environment.BASE_API_URL}/operations/user`)

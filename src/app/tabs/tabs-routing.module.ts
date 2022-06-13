@@ -35,7 +35,23 @@ const routes: Routes = [
       {
         path: 'avoirs/:id',
         loadChildren: () => import('../entreprise/avoirs/avoirs.module').then( m => m.AvoirsPageModule)
-      }
+      },
+      {
+        path: 'infos',
+        loadChildren: () => import('../parametres/infos/infos.module').then( m => m.InfosPageModule)
+      },
+      {
+        path: 'scan',
+        loadChildren: () => import('../parametres/scan/scan.module').then( m => m.ScanPageModule)
+      },
+      {
+        path: 'param-password',
+        loadChildren: () => import('../parametres/param-password/param-password.module').then( m => m.ParamPasswordPageModule)
+      },
+      {
+        path: 'politique',
+        loadChildren: () => import('../parametres/politique/politique.module').then( m => m.PolitiquePageModule)
+      },
     ]
   },
   {

@@ -11,7 +11,11 @@ const routes: Routes = [
   {
     path: 'modal-visite',
     loadChildren: () => import('./modal-visite/modal-visite.module').then( m => m.ModalVisitePageModule)
-  }
+  },
+  /*{
+    path: 'visite-entreprise',
+    loadChildren: () => import('./visite-entreprise/visite-entreprise.module').then( m => m.VisiteEntreprisePageModule)
+  }*/
 ];
 
 @NgModule({

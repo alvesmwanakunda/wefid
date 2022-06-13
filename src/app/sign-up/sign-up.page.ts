@@ -6,6 +6,8 @@ import { CustomValidators } from "ng2-validation";
 import { restResponse } from './../shared/models/restResponse';
 import { ClientService } from '../shared/services/client.service';
 import { AlertController, ToastController, LoadingController  } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
+
 
 
 
@@ -27,18 +29,23 @@ export class SignUpPage implements OnInit {
   submitted = false;
   signupFormErrors:any;
   errorMessage: string="";
-  user:any
+  user:any;
+  ios:boolean;
+  android:boolean;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private clientService: ClientService,
     private http: HttpClient,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    public platform: Platform
   ) { 
     this.signupFormErrors={
       emailorphone:{},
     };
+    this.ios = platform.is('ios');
+    this.android = platform.is('android');
   }
 
   account_validation_messages={

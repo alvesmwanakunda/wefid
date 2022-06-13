@@ -1,115 +1,124 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-   <ion-grid>
+<ion-content [fullscreen]="true">
+  
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="circles" pullingIcon="chevron-down-circle-outline"></ion-refresher-content>
+  </ion-refresher>
+
+  <div style="position:relative;top:21px;">
     <ion-row>
-      <ion-col (click)="openDialog()">
-        <ion-img src="assets/images/Qr.png" style="width: 34px;height: 32px;"></ion-img>
-      </ion-col><!--ion-col-->
-      <ion-col>
-        <ion-title>
-          Accueil
-        </ion-title>
-      </ion-col><!--ion-col-->
-      <ion-col>
-        <ion-icon id="size-button" name="qr-code" style="width: 34px;height: 28px;float: right;"></ion-icon>
-      </ion-col><!--ion-col-->
-    </ion-row>
-   </ion-grid>
-  </ion-toolbar>
-</ion-header>
+      <ion-col size="9">
+        <p style="font-size: 32px;font-weight: 700;margin-left: 15px">Bonjour</p>
+        <p style="margin-left: 15px;font-size: 14px;position: relative;bottom: 16px;">cher visiteur</p>
+      </ion-col><!--col-->
+      <ion-col size="3">
+        <ion-img src="assets/images/barcode.png" class="img-header"></ion-img>
+      </ion-col><!--col-->
+    </ion-row><!--row-->  
+    
+  </div>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Accueil</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="headImg">
+  
+    <ion-slides pager="false" [options]="slideOpts">
+      <ion-slide>
+        <ion-img src="assets/images/sl2.jpg"></ion-img>
+      </ion-slide>
+      <ion-slide>
+        <ion-img src="assets/images/sl1.jpg"></ion-img>
+      </ion-slide>
+      <ion-slide>
+        <ion-img src="assets/images/sl3.jpg"></ion-img>
+      </ion-slide>
+    </ion-slides>
 
-  <ion-slides pager="true" [options]="slideOpts">
-    <ion-slide>
-      <ion-img src="assets/images/radi.jpeg"></ion-img>
-    </ion-slide>
-    <ion-slide>
-      <ion-img src="assets/images/auchan.jpeg"></ion-img>
-    </ion-slide>
-  </ion-slides>
- 
-    <div style="font-size: 13px;padding-top: 10px;">
-        <ion-col size="12" class="ion-margin-bottom">
-          <ion-item fill="outline" mode="md">
-            <ion-input type="text" autocomplete="off" autocorrect="off" placeholder="Rechercher" (keyup)="applyFilter($event)"  #input></ion-input>
-          </ion-item>
+  </div><!--div-->
+
+<div class="ion-padding" style="position: relative;bottom: 45px;">
+
+  <div style="font-size: 13px;padding-top: 10px;">
+    <ion-col size="12" class="ion-margin-bottom">
+      <ion-item fill="outline" mode="md">
+        <ion-input type="text" autocomplete="off" autocorrect="off" placeholder="Rechercher" (keyup)="applyFilter($event)"  #input></ion-input>
+      </ion-item>
+    </ion-col>
+  </div><!--div-->
+
+  <div style="margin-bottom: 10px;">
+    <ion-text style="color:#243665;">Catégories</ion-text>
+  </div>
+
+  <div>
+      <ion-row>
+        <ion-col  class="ion-no-padding" (click)="filterClick('All')">
+          <div class="roundCat" [ngClass]="status=='All' ? 'roundCatGreen' : 'roundCat'">
+            <img src="assets/images/store.png" class="imgcat">
+          </div>
+          <p style="font-size: 11px;text-align: center;">Visite récente</p>
         </ion-col>
-    </div><!--div-->
+        <ion-col class="ion-no-padding"  (click)="filterClick('Hotel')">
+          <div class="roundCat" [ngClass]="status=='Hotel' ? 'roundCatGreen' : 'roundCat'">
+            <img src="assets/images/hotel.png" class="imgcat">
+          </div>
+          <p style="font-size: 11px;text-align: center;">Hotel</p>
+        </ion-col>
+        <ion-col class="ion-no-padding"  (click)="filterClick('Sport')">
+          <div class="roundCat" [ngClass]="status=='Sport' ? 'roundCatGreen' : 'roundCat'">
+            <img src="assets/images/sport.png" class="imgcat">
+          </div>
+          <p style="font-size: 11px;text-align: center;">Sport</p>
+        </ion-col>
+        <ion-col class="ion-no-padding"  (click)="filterClick('Restaurant')">
+          <div class="roundCat" [ngClass]="status=='Restaurant' ? 'roundCatGreen' : 'roundCat'">
+            <img src="assets/images/restaurant.png" class="imgcat">
+          </div>
+          <p style="font-size: 11px;text-align: center;">Restaurant</p>
+        </ion-col>
+        <!--
+           <ion-col class="ion-no-padding"  (click)="filterClick('Supermarché')">
+            <div class="roundCat">
+              <img src="assets/images/cart.png" class="imgcat">
+            </div>
+            <p class="textcat">Supermarché</p>
+          </ion-col>
+        -->
+      </ion-row>
+  </div><!--Categories-->
 
-    <div>
-
-      <ion-slides pager="false" [options]="slideOpt">
-        <ion-slide>
-
-          <ion-grid>
-            <ion-row>
-              <ion-col  (click)="filterClick('Supermarché')">
-                <div class="roundCat">
-                  <img src="assets/images/cart.png" class="imgcat">
-                </div>
-                <p class="textcat">Supermarché</p>
-              </ion-col>
-              <ion-col (click)="filterClick('Hotel')">
-                <div class="roundCat">
-                  <img src="assets/images/hotel.png" class="imgcat">
-                </div>
-                <p class="textcat">Hotel</p>
-              </ion-col>
-            </ion-row>
-          </ion-grid> 
-          
-        </ion-slide><!---->
-
-        <ion-slide>
-
-          <ion-grid>
-            <ion-row>
-            <ion-col (click)="filterClick('Sport')">
-                <div class="roundCat">
-                  <img src="assets/images/sport.png" class="imgcat">
-                </div>
-                <p class="textcat">Sport</p>
-              </ion-col>
-              <ion-col (click)="filterClick('Restaurant')">
-                <div class="roundCat">
-                  <img src="assets/images/restaurant.png" class="imgcat">
-                </div>
-                <p class="textcat">Restaurant</p>
-              </ion-col>
-            </ion-row>
-          </ion-grid> 
-          
-        </ion-slide><!---->
-      </ion-slides>
-
-    </div><!--div-->
-
-    <ion-list >
-      <ion-card class="card-hd"  *ngFor="let entreprise of entreprises">
-        <ion-card-content class="content-card">
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                <img src="data:image/png;base64,{{entreprise.image}}" class="imgproduit">
-              </ion-col>
-              <ion-col>
-                <span class="titleinfo">{{entreprise?.creation | date: "MMM dd YYYY,THH:MM"}}</span>
+  <div>
+      <ion-list *ngIf="entreprises.length>=1">
+        <ion-row *ngFor="let entreprise of entreprises">
+          <ion-col size="3" (click)="detailEntreprise(entreprise?._id)">
+            <img src="data:image/png;base64,{{entreprise.image}}" class="imgproduit" *ngIf="entreprise.image">
+            <img src="assets/images/icon.png" class="imgproduit" *ngIf="!entreprise.image">
+          </ion-col><!--col-->
+          <ion-col size="9" (click)="detailEntreprise(entreprise?._id)">
+            <ion-item>
+              <div>
                 <p class="titleclient">{{entreprise?.nom}}</p>
-                <span class="titleinfo" style="position: relative;bottom: 8px;">{{entreprise?.adresse}}</span>
-              </ion-col>
-              <ion-col>
-                <p style="text-align: right;padding-top: 23px;" class="titlenumber"><span style="color: #52E34F;">+</span> 0</p>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-card-content>
-      </ion-card>
-    </ion-list>
+                <span class="titleinfo" style="position: relative;bottom: 20px;" *ngIf="entreprise?.adresse">{{entreprise?.adresse}}</span>
+                <br *ngIf="entreprise?.adresse" />
+                <span class="titleinfo" style="position: relative;bottom: 15px;">{{entreprise?.creation | date: "MMM dd YYYY,THH:MM"}}</span>
+              </div>
+              <div class="dnumber">
+                <p style="font-size: 13px;" class="titlenumber"><span style="color: #52E34F;">+</span> 0</p>
+              </div>
+
+            </ion-item>
+          </ion-col><!--col-->
+        </ion-row>
+        <br/>
+      </ion-list>
+      <div *ngIf="entreprises.length==0">
+        <div class="ion-padding" align="center">
+          <img src="assets/images/commerce.png" class="imgno"/>
+          <p style="font-size: 11px;text-align: center;">Pas de commerces disponibles</p>
+          <br/><br/>
+        </div>
+      </div>
+  </div>
+  
+
+</div><!--body-->
+  
 
 </ion-content>

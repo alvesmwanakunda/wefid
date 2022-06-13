@@ -7,6 +7,8 @@ import { QrcodeCadeauPage } from '../qrcode-cadeau/qrcode-cadeau.page';
 import { ModalCadeauPage } from './modal-cadeau/modal-cadeau.page';
 import { ModalController } from '@ionic/angular';
 import { DetailCadeauPage } from './detail-cadeau/detail-cadeau.page';
+import { Subscription } from 'rxjs';
+import { Platform } from '@ionic/angular';
 
 
 
@@ -16,6 +18,10 @@ import { DetailCadeauPage } from './detail-cadeau/detail-cadeau.page';
   styleUrls: ['./entreprise.page.scss'],
 })
 export class EntreprisePage implements OnInit {
+
+  private isCurrentView:boolean;
+  private displayWarning:boolean;
+  subscriptions: Subscription = new Subscription();
 
   idEntreprise:any;
   entreprise:any;
@@ -36,7 +42,8 @@ export class EntreprisePage implements OnInit {
     private router: Router,
     private entrepriseService: EntrepriseService,
     public dialog: MatDialog,
-    public modalController: ModalController
+    public modalController: ModalController,
+    private platform: Platform,
   ) { 
     this.idEntreprise = this.route.snapshot.paramMap.get('id');
     this.getEntreprise(this.route.snapshot.paramMap.get('id'));
@@ -46,6 +53,15 @@ export class EntreprisePage implements OnInit {
     this.listCadeauClient(this.route.snapshot.paramMap.get('id'));
     this.listEncaisse(this.route.snapshot.paramMap.get('id'));
     this.listDepense(this.route.snapshot.paramMap.get('id'));
+    this.subscriptions.add(
+      this.platform.backButton.subscribeWithPriority(9999, (processNextHandler)=>{
+        if(this.isCurrentView){
+          this.displayWarning=true;
+        }else{
+          processNextHandler();
+        }
+      })
+    )
   }
 
   ngOnInit() {

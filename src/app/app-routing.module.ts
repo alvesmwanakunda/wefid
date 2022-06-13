@@ -43,10 +43,10 @@ const routes: Routes = [
     path: 'qrcode-user',
     loadChildren: () => import('./qrcode-user/qrcode-user.module').then( m => m.QrcodeUserPageModule)
   },
-  {
+  /*{
     path: 'visite',
     loadChildren: () => import('./visite/visite.module').then( m => m.VisitePageModule)
-  },
+  },*/
   {
     path: 'qrcode-cadeau',
     loadChildren: () => import('./qrcode-cadeau/qrcode-cadeau.module').then( m => m.QrcodeCadeauPageModule)
@@ -62,6 +62,10 @@ const routes: Routes = [
   {
     path: 'open-depense',
     loadChildren: () => import('./open-depense/open-depense.module').then( m => m.OpenDepensePageModule)
+  },
+  {
+    path: 'tabs-visite',
+    loadChildren: () => import('./tabs-visite/tabs-visite.module').then( m => m.TabsVisitePageModule)
   },
   /*{
     path: 'entreprise',

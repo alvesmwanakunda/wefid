@@ -1,15 +1,59 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Paramètres</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true">
+  
+  <div style="padding-top: 20px" class="ion-padding">
+    <p style="font-size: 32px;font-weight: 700;text-align: center;">Paramètres</p>
+    <mat-divider></mat-divider>
+  </div>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Paramètres</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div>
+    <ion-list>
+      <ion-item [routerLink]="'/tabs/infos'">
+        <ion-label class="text_label">
+          <button ion-button class="div_btn"><ion-icon name="person-outline"></ion-icon></button> Infos personnelles
+        </ion-label>
+      </ion-item>
+      <ion-item [routerLink]="'/tabs/scan'"> 
+        <ion-label class="text_label">
+          <button ion-button class="div_btn"><ion-icon name="scale-outline"></ion-icon></button> Scan
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="text_label">
+          <button ion-button class="div_btn"><ion-icon name="people-outline"></ion-icon></button> Partager l'application
+        </ion-label>
+      </ion-item>
+      <ion-item [routerLink]="'/tabs/param-password'">
+        <ion-label class="text_label">
+          <button ion-button class="div_btn"><ion-icon name="key-outline"></ion-icon></button> Mot de passe
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="text_label">
+          <button ion-button class="div_btn"><ion-icon name="alert-circle-outline"></ion-icon></button> Nous contacter
+        </ion-label>
+      </ion-item>
+      <ion-item [routerLink]="'/tabs/politique'">
+        <ion-label class="text_label">
+          <button ion-button class="div_btn"><ion-icon name="flag-outline"></ion-icon></button> Mentions légales & Politique de confidentialité
+        </ion-label>
+      </ion-item>
+    </ion-list>  
+  </div>
+  <div class="ion-padding">
+    <p style="font-size:12px;text-align:center;">Version 1.2.0</p>
+    <p style="font-size:12px;text-align:center;color:#979797;">Visitez nos pages sur les réseaux sociaux et restez informés de notre actualité</p>
+  </div>
+  <div class="ion-padding">
+    <div align="center">
+      <img src="assets/images/instagram.png" width="50px">
+      <img src="assets/images/linkedin.png" width="36px" style="margin-right:7px;">
+      <img src="assets/images/facebook.png" width="36px">
+    </div>
+    <div align="center" style="padding-top: 15px;">
+      <button mat-button style="color:#FF0000;">Supprimer le compte</button>
+    </div>
+    <br/><br/><br/><br/>
+  </div><!--icon-->
 
 
 

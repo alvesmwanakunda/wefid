@@ -61,7 +61,7 @@
       <p style="text-align: center;font-size: 12px;">Pas de compte?<button style="text-align: center;color: #2D8CF6;font-size: 13px;" [routerLink]="'/sign-up'" mat-button>S'inscire</button></p>
      </ion-text>
   
-     <div style="text-align: center;">
+     <div style="text-align: center;" *ngIf="ios">
       <button mat-raised-button class="btnlogin"><i class="fa-brands fa-apple" style="padding-bottom: 5px;font-size: 20px;"></i> Sign in with Apple</button>
      </div>
 

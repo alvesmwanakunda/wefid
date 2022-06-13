@@ -23,7 +23,7 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+  <ion-refresher slot="fixed" refreshingSpinner="circles" pullingIcon="chevron-down-circle-outline" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
@@ -80,7 +80,7 @@
         {{entreprise?.description}}
     </p>
     <button mat-button (click)="showText()" class="btnShow">
-      <span style="color: #52E34F;font-size: 12px;">{{ isReadMore ? 'Lire plus': 'Lire moins' }} <mat-icon style="position: absolute;top: 8px;">keyboard_arrow_down</mat-icon> </span>
+      <span style="color: #52E34F;font-size: 12px;">{{ isReadMore ? 'Lire plus': 'Lire moins' }} <mat-icon style="position: absolute;top: 8px;" *ngIf="isReadMore">keyboard_arrow_down</mat-icon> <mat-icon style="position: absolute;top: 8px;" *ngIf="!isReadMore">keyboard_arrow_up</mat-icon> </span>
     </button>
 
     <ion-row>

@@ -8,7 +8,8 @@ import { Component } from '@angular/core';
 export class HomePage {
 
   slideOpts={
-    initialSlide:0,
+    //initialSlide:0,
+    autoplay:true
     //speed:1200
   };
 

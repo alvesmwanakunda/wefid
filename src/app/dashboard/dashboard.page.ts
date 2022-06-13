@@ -5,6 +5,10 @@ import { QrcodeUserPage } from '../qrcode-user/qrcode-user.page';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Router} from "@angular/router";
 import { IonInfiniteScroll, IonVirtualScroll } from '@ionic/angular';
+import { Subscription } from 'rxjs';
+import { Platform } from '@ionic/angular';
+
+
 
 
 @Component({
@@ -14,9 +18,15 @@ import { IonInfiniteScroll, IonVirtualScroll } from '@ionic/angular';
 })
 export class DashboardPage implements OnInit {
 
+  //desactive button back
+  private isCurrentView:boolean;
+  private displayWarning:boolean;
+  subscriptions: Subscription = new Subscription()
+
   slideOpts={
     initialSlide:0,
-    speed:800
+    speed:500,
+    autoplay:true
   };
   slideOpt={
     initialSlide:0,
@@ -39,9 +49,19 @@ export class DashboardPage implements OnInit {
     private popoverController: PopoverController,
     public dialog: MatDialog,
     private router: Router,
+    private platform: Platform,
     ) { 
       this.user = JSON.parse(localStorage.getItem('user'));
       console.log("User", this.user);
+      this.subscriptions.add(
+        this.platform.backButton.subscribeWithPriority(9999, (processNextHandler)=>{
+          if(this.isCurrentView){
+            this.displayWarning=true;
+          }else{
+            processNextHandler();
+          }
+        })
+      )
     }
 
   ngOnInit() {
@@ -89,12 +109,16 @@ export class DashboardPage implements OnInit {
    if(!this.isEntreprise){
      if(categorie!="All"){
       this.status = categorie; 
-      this.entrepriseService.getOperationByClient()
-      .subscribe((res:any) => this.operations = res.message.filter(product=>product.entreprise.categorie==categorie));
+      this.entrepriseService.getOperationByClient().subscribe((res:any) =>{
+        this.operations = res.message.filter(product=>product.entreprise.categorie==categorie);
+        console.log("Categorie ", this.operations.length);
+      });
      }else{
       this.status = "All"; 
-      this.entrepriseService.getOperationByClient()
-      .subscribe((res:any) => this.operations = res.message);
+      this.entrepriseService.getOperationByClient().subscribe((res:any) =>{
+        this.operations = res.message
+        console.log("Categorie all", this.operations.length);
+      });
      }
       
    }else{
@@ -171,5 +195,12 @@ export class DashboardPage implements OnInit {
       console.log('Async operation has ended');
       event.target.complete();
     }, 200);
+  }
+
+  ionViewDidEnter(){
+    this.isCurrentView=true;
+  }
+  ionViewWillLeave(){
+    this.isCurrentView = false;
   }
 }

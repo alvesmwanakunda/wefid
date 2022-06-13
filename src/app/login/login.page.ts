@@ -8,6 +8,7 @@ import {
   Validators
 } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -31,17 +32,22 @@ export class LoginPage implements OnInit {
   emailorphone = new FormControl("", [
     Validators.required,
   ]);
+  ios:boolean;
+  android:boolean;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    public platform: Platform
   ) {
     this.loginFormErrors = {
       emailorphone: {},
       password: {},
     };
+    this.ios = platform.is('ios');
+    this.android = platform.is('android');
    }
    account_validation_messages = {
     emailorphone: [
@@ -124,7 +130,7 @@ export class LoginPage implements OnInit {
 
   async presentLoading(){
     const loading = await this.loadingController.create({
-      message:'Please wait...',
+      message:'Veuillez patienter...',
       duration:2000
     });
     await loading.present();

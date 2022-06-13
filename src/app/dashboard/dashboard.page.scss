@@ -1,7 +1,7 @@
-ion-img::part(image){
-    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25) !important;
+/*ion-img::part(image){
+    //@function: 0px 4px 7px rgba(0, 0, 0, 0.25) !important;
     //border-radius: 10px !important;
-}
+}*/
 
 .example-full-width {
     width: 100%;
@@ -34,12 +34,12 @@ ion-img::part(image){
 }
 
 .imgcat{
-    width: 52%;
+    width: 60%;
     display: block;
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    top: 12px;
+    top: 5px;
 }
 
 .textcat{
@@ -143,4 +143,13 @@ ion-img::part(image){
         width: 100% !important;
         transform: translate(-50%, -50%) !important;
   }
+}
+
+.img-header{
+  position: relative;
+  top: 10px;
+  width: 34px;
+  height: 32px;
+  float: right;
+  margin-right: 11px;
 }

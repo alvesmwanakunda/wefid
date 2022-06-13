@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EntrepriseService } from '../shared/services/entreprise.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ModalVisitePage } from './modal-visite/modal-visite.page';
+import { Router} from "@angular/router";
+
 
 
 
@@ -14,17 +16,20 @@ export class VisitePage implements OnInit {
 
   slideOpts={
     initialSlide:0,
-    speed:800
+    speed:800,
+    autoplay:true
   };
   slideOpt={
     initialSlide:0,
   };
   entreprises:any=[];
   isEntreprise=false;
+  status:any="All";
 
   constructor(
     private entrepriseService: EntrepriseService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -45,21 +50,36 @@ export class VisitePage implements OnInit {
     })
   }
 
+  detailEntreprise(idEntreprise){
+
+    this.router.navigate(["tabs-visite/visite-entreprise",idEntreprise]);
+
+  }
+
   
   filterClick(categorie:String){
-   console.log("Categorie", categorie);
-   this.isEntreprise=false;
-    this.entrepriseService.getAllEntrepriseVisiter()
-        .subscribe((res:any) => this.entreprises = res.message.filter(product=>product.categorie==categorie));
-  }
+    console.log("Categorie", categorie);
+    //this.isEntreprise=false;
 
-  applyFilter(eveent:Event){
-
-    const filterValue = (eveent.target as HTMLInputElement).value;
-    console.log("Valeur", filterValue);
-    this.entrepriseService.getAllEntrepriseVisiter()
-        .subscribe((res:any) => this.entreprises = res.message.filter(product=>product.nom.toLowerCase().includes(filterValue)));
-  }
+     if(categorie!="All"){ 
+       this.status =categorie;
+       this.entrepriseService.getAllEntrepriseVisiter()
+          .subscribe((res:any) => this.entreprises = res.message.filter(product=>product.categorie==categorie));
+     }else{
+       this.status = "All";
+       this.entrepriseService.getAllEntrepriseVisiter()
+          .subscribe((res:any) => this.entreprises = res.message);
+     }  
+   }
+ 
+   applyFilter(eveent:Event){
+ 
+     const filterValue = (eveent.target as HTMLInputElement).value;
+     console.log("Valeur", filterValue);
+ 
+      this.entrepriseService.getAllEntrepriseVisiter()
+         .subscribe((res:any) => this.entreprises = res.message.filter(product=>product.nom.toLowerCase().includes(filterValue)));
+   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ModalVisitePage, {
@@ -69,6 +89,14 @@ export class VisitePage implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed',result);
     });
+  }
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 200);
   }
 
 

@@ -136,10 +136,10 @@
 
 
       <div>
-       <p class="text-barre"> <span>Se connecter avec</span></p>
+       <p class="text-barre" [routerLink]="'/login'"> <span>Se connecter avec</span></p>
       </div>
    
-      <div style="text-align: center;">
+      <div style="text-align: center;" *ngIf="ios">
        <button mat-raised-button class="btnlogin"  [routerLink]="'/login'"><i class="fa-brands fa-apple" style="padding-bottom: 5px;font-size: 20px;"></i> Sign in with Apple</button>
       </div>
 

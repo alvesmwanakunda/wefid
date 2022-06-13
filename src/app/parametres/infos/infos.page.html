@@ -1,0 +1,88 @@
+<ion-content [fullscreen]="true">
+
+  <div style="padding-top: 20px" class="ion-padding">
+    <ion-row>
+      <ion-col size="2">
+        <button ion-button class="div_btn" [routerLink]="'/tabs/parametres'"><ion-icon name="chevron-back"></ion-icon></button>
+      </ion-col><!--col-->
+      <ion-col size="8">
+        <p style="font-size: 20px;font-weight: 500;text-align: center;">Infos personnelles</p>
+      </ion-col><!--col-->
+      <ion-col size="2" align="right">
+        <ion-icon name="create" style="font-size: 35px;"></ion-icon>
+      </ion-col><!--col-->
+    </ion-row><!--ion-row-->
+   
+  </div>
+
+  <div class="ion-padding" *ngIf="user" style="padding-top:70px;">
+    <form novalidate>
+
+      <mat-form-field appearance="legacy" class="example-full-width">
+        <mat-label style="font-size: 14px;">Nom</mat-label>
+        <input matInput name="nom" [(ngModel)]="user?.user.nom" #nom="ngModel" required>
+      </mat-form-field>
+      <div *ngIf="nom.errors && (nom.dirty || nom.touched)">
+        <div [hidden]="!nom.errors.required">
+          <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
+        </div>
+      </div>
+
+      <mat-form-field appearance="legacy" class="example-full-width">
+        <mat-label style="font-size: 14px;">Prénom</mat-label>
+        <input matInput name="prenom" [(ngModel)]="user?.user.prenom" #prenom="ngModel" required>
+      </mat-form-field>
+      <div *ngIf="prenom.errors && (prenom.dirty || prenom.touched)">
+        <div [hidden]="!prenom.errors.required">
+          <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
+        </div>
+      </div>
+
+      <mat-form-field appearance="legacy" class="example-full-width">
+        <mat-label style="font-size: 14px;">Identifiant</mat-label>
+        <input matInput name="phone" [(ngModel)]="user?.user.phone" placeholder="Placeholder" readonly>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" class="example-full-width">
+        <mat-label style="font-size: 14px;">Age</mat-label>
+        <input matInput name="age" [(ngModel)]="user.age" #age="ngModel" required>
+      </mat-form-field>
+      <div *ngIf="age.errors && (age.dirty || age.touched)">
+        <div [hidden]="!age.errors.required">
+          <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
+        </div>
+      </div>
+
+      <mat-form-field appearance="legacy" class="example-full-width">
+        <mat-label>Genre</mat-label>
+        <select matNativeControl name="genre" [(ngModel)]="user.genre" #genre="ngModel" required>
+          <option value="{{user.genre}}">{{user.genre}}</option>
+          <option value="Femme">Femme</option>
+          <option value="Homme">Homme</option>
+          <option value="Non-binaire">Non-binaire</option>
+        </select>
+      </mat-form-field>
+      <div *ngIf="genre.errors && (genre.dirty || genre.touched)">
+        <div [hidden]="!genre.errors.required">
+          <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
+        </div>
+      </div>
+
+      <mat-form-field appearance="legacy" class="example-full-width">
+        <mat-label style="font-size: 14px;">Adresse</mat-label>
+        <input matInput name="adresse" [(ngModel)]="user.adresse" #adresse="ngModel" required>
+      </mat-form-field>
+      <div *ngIf="adresse.errors && (adresse.dirty || adresse.touched)">
+        <div [hidden]="!adresse.errors.required">
+          <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <div align="center">
+    <button mat-raised-button class="btn-log" type="submit" (click)="updateUser(user)" >Terminer</button>
+  </div>
+
+</ion-content>

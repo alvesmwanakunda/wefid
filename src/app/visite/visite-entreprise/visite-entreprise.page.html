@@ -1,0 +1,119 @@
+<ion-content [fullscreen]="true">
+
+  <ion-refresher slot="fixed" refreshingSpinner="circles" pullingIcon="chevron-down-circle-outline" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="ion-padding">
+
+    <ion-img  src="assets/images/sl1.jpg"></ion-img>
+    <button mat-stroked-button class="btn-back" [routerLink]="'/tabs-visite/visite'"><mat-icon style="color: #000000;">keyboard_arrow_left</mat-icon></button>
+  </div>
+
+  <div class="ion-padding" style="padding-top: 0px;">
+
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <div class="info_entreprise">
+          <img src="assets/images/phone.png" class="phone-img">
+          <p style="font-size: 11px;text-align: center;color: #243665;">Contact</p>
+       </div>
+       
+      </ion-col><!--ion-col-->
+      <ion-col class="ion-no-padding">
+        <div class="info_entreprise">
+          <img src="assets/images/map.png" class="phone-img">
+          <p style="font-size: 11px;text-align: center;color: #243665;">Adresse</p>
+        </div>
+        
+      </ion-col><!--ion-col-->
+      <ion-col class="ion-no-padding" (click)="openDialog()">
+        <div class="info_entreprise">
+          <img src="assets/images/dollar.png" class="phone-img">
+          <p style="font-size: 11px;text-align: center;color: #243665;">Mes avoirs</p>
+        </div>
+        
+      </ion-col><!--ion-col-->
+      <ion-col class="ion-no-padding" (click)="openDialog()">
+        <div class="info_entreprise">
+          <img src="assets/images/cadeau.png" class="phone-img">
+          <p style="font-size: 11px;text-align: center;color: #243665;">Cadeaux</p>
+        </div>
+      </ion-col><!--ion-col-->
+    </ion-row>
+
+    <p style="font-weight: bold;padding-top: 6px;color: #243665;">{{entreprise?.nom}}</p>
+
+    <p style="font-size: 10px;" [ngClass]="{'limitTextHeight':isReadMore}">
+        {{entreprise?.description}}
+    </p>
+    <button mat-button (click)="showText()" class="btnShow">
+      <span style="color: #52E34F;font-size: 12px;">{{ isReadMore ? 'Lire plus': 'Lire moins' }} <mat-icon style="position: absolute;top: 8px;">keyboard_arrow_down</mat-icon> </span>
+    </button>
+
+    <ion-row>
+      <ion-col class="col-depense">
+        <div>
+          <img src="assets/images/ribbon.png" class="img-r1">
+          <span class="title1">Total points disponibles</span>
+        </div>
+        <div>
+          <span class="number1">0</span>
+        </div>
+        <span style="color:#52E34F;font-size: 12px;float: right;">Détail</span>
+     
+      </ion-col><!--ion-col-->
+
+      <ion-col class="col-depense">
+        <div>
+          <img src="assets/images/ribbon1.png" class="img-r1">
+          <span class="title1">Total points dépensé</span>
+        </div>
+        <div>
+          <span class="number1">0</span>
+        </div>
+        <span style="color:#52E34F;font-size: 12px;float: right;">Détail</span>
+      </ion-col><!--ion-col-->
+    </ion-row><!--row-->
+
+  </div><!--padding-->
+
+  <div>
+    <mat-tab-group dynamicHeight mat-align-tabs="center">
+      <mat-tab label="Cadeaux reçus">
+        <div style="padding-top:20px;">
+          <div class="ion-padding" align="center">
+            <img src="assets/images/no.png" class="imgno"/>
+            <p style="font-size: 11px;text-align: center;">Vous ne disposez pas de points de fidélité pour ce commerce</p>
+            <br/><br/>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Points reçus">
+        <div style="padding-top:20px;">
+
+          <div class="ion-padding" align="center">
+            <img src="assets/images/no.png" class="imgno"/>
+            <p style="font-size: 11px;text-align: center;">Vous ne disposez pas de points de fidélité pour ce commerce</p>
+            <br/><br/>
+          </div>
+
+         
+        </div>
+      </mat-tab>
+      <mat-tab label="Cadeaux">
+        <div style="padding-top:20px;">
+
+          <div class="ion-padding" align="center">
+            <img src="assets/images/no.png" class="imgno"/>
+            <p style="font-size: 11px;text-align: center;">Vous ne disposez pas de points de fidélité pour ce commerce</p>
+            <br/><br/>
+          </div>
+          
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+
+</ion-content>

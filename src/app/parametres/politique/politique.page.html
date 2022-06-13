@@ -1,0 +1,39 @@
+<ion-content [fullscreen]="true">
+
+  <div style="padding-top: 20px" class="ion-padding">
+    <ion-row>
+      <ion-col size="2">
+        <button ion-button class="div_btn" [routerLink]="'/tabs/parametres'"><ion-icon name="chevron-back"></ion-icon></button>
+      </ion-col><!--col-->
+      <ion-col size="10">
+        <p style="font-size: 20px;font-weight: 500;text-align: center;">Notre politique</p>
+      </ion-col><!--col-->
+     
+    </ion-row><!--ion-row-->
+   
+  </div><!--padding-->
+
+  <div style="padding-top:55px;">
+     <ion-card>
+      <ion-card-content>
+
+        <div align="center">
+          <ion-icon name="information" class="info"></ion-icon>
+        </div>
+        <ion-list>
+          <ion-item (click)="presentModal()">
+            <ion-label class="text_label">
+              Mentions légales
+            </ion-label>
+          </ion-item>
+          <ion-item (click)="presentModalP()"> 
+            <ion-label class="text_label">
+              Politique de confidentialité
+            </ion-label>
+          </ion-item>
+        </ion-list> 
+      </ion-card-content>
+     </ion-card>
+  </div>
+
+</ion-content>
