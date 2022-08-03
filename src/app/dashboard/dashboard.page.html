@@ -7,10 +7,12 @@
     <div style="position:relative;top:21px;">
       <ion-row>
         <ion-col size="9">
-          <p style="font-size: 32px;font-weight: 700;margin-left: 15px">Bonjour</p>
-          <p style="margin-left: 15px;font-size: 14px;position: relative;bottom: 16px;">{{user?.nom}} {{user?.prenom}}</p>
+          <div>
+            <p style="font-size: 32px;font-weight: 700;margin-left: 15px;position: relative;top: 12px;">Salut</p>
+            <p style="margin-left: 15px;font-size: 14px;position: relative;bottom: 6px;">{{user?.user.nom}} {{user?.user.prenom}}</p>
+          </div><!--div-->
         </ion-col><!--col-->
-        <ion-col size="3">
+        <ion-col size="3" (click)="scanner()">
           <ion-img src="assets/images/barcode.png" class="img-header"></ion-img>
         </ion-col><!--col-->
       </ion-row><!--row-->  
@@ -93,9 +95,8 @@
                 <ion-item>
                   <div>
                     <p class="titleclient">{{entreprise?.nom}}</p>
-                    <span class="titleinfo" style="position: relative;bottom: 20px;" *ngIf="entreprise?.adresse">{{entreprise?.adresse}}</span>
-                    <br *ngIf="entreprise?.adresse" />
-                    <span class="titleinfo" style="position: relative;bottom: 15px;">{{entreprise?.creation | date: "MMM dd YYYY,THH:MM"}}</span>
+                    <p class="titleinfo" style="position: relative;bottom: 9px;" *ngIf="entreprise?.adresse">{{entreprise?.adresse}}</p>
+                    <span class="titleinfo" style="position: relative;bottom: 21px;">{{entreprise?.creation | date: "MMM dd YYYY,THH:MM"}}</span>
                   </div>
                   <div class="dnumber">
                     <p style="font-size: 13px;" class="titlenumber"><span style="color: #52E34F;">+</span> 0</p>
@@ -126,9 +127,8 @@
               <ion-item>
                 <div>
                   <p class="titleclient">{{operation?.entreprise?.nom}}</p>
-                  <span class="titleinfo" style="position: relative;bottom: 20px;" *ngIf="operation?.entreprise?.adresse">{{operation?.entreprise?.adresse}}</span>
-                  <br *ngIf="operation?.entreprise?.adresse"/>
-                  <span class="titleinfo" style="position: relative;bottom: 15px;">{{operation?.entreprise?.creation | date: "MMM dd YYYY, hh:mm"}}</span>
+                  <p class="titleinfo" style="position: relative;bottom: 9px;" *ngIf="operation?.entreprise?.adresse">{{operation?.entreprise?.adresse}}</p>
+                  <span class="titleinfo" style="position: relative;bottom: 21px;">{{operation?.entreprise?.creation | date: "MMM dd YYYY, hh:mm"}}</span>
                 </div>
                 <div class="dnumber">
                   <p style="font-size: 13px;" class="titlenumber"><span style="color: #52E34F;">+</span> {{operation?.point}}</p>

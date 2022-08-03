@@ -16,6 +16,14 @@ const routes: Routes = [
     path: 'detail-cadeau',
     loadChildren: () => import('./detail-cadeau/detail-cadeau.module').then( m => m.DetailCadeauPageModule)
   },
+  {
+    path: 'adresse',
+    loadChildren: () => import('./adresse/adresse.module').then( m => m.AdressePageModule)
+  },
+  {
+    path: 'image-cadeau',
+    loadChildren: () => import('./image-cadeau/image-cadeau.module').then( m => m.ImageCadeauPageModule)
+  },
 ];
 
 @NgModule({

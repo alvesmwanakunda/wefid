@@ -24,5 +24,17 @@ export class ClientService {
   updatePassword(body){
     return this.http.post(`${environment.BASE_API_URL}/profil/password`,body)
   }
+
+  allMessage(idClient){
+    return this.http.get(`${environment.BASE_API_URL}/messagesApp/client/${idClient}`)
+  }
+
+  detailMessage(idClient,idEntreprise){
+    return this.http.get(`${environment.BASE_API_URL}/detail/messageApp/${idClient}/${idEntreprise}`)
+  }
+
+  deleteAll(body){
+    return this.http.post(`${environment.BASE_API_URL}/delete/all/message`,body)
+  }
   
 }

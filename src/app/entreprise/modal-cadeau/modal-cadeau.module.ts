@@ -6,6 +6,7 @@ import { ModalCadeauPageRoutingModule } from './modal-cadeau-routing.module';
 import { ModalCadeauPage } from './modal-cadeau.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { EntrepriseService } from 'src/app/shared/services/entreprise.service';
+//import { ZoomPanDirectiveDirective } from 'src/app/shared/directives/zoom-pan-directive.directive';
 
 @NgModule({
   imports: [

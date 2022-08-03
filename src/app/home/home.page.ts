@@ -9,7 +9,7 @@ export class HomePage {
 
   slideOpts={
     //initialSlide:0,
-    autoplay:true
+    //autoplay:true
     //speed:1200
   };
 

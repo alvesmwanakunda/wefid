@@ -1,4 +1,9 @@
 <ion-content [fullscreen]="true">
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="circles" pullingIcon="chevron-down-circle-outline"></ion-refresher-content>
+  </ion-refresher>
+  
   <div style="padding-top: 20px" class="ion-padding">
     <p style="font-size: 32px;font-weight: 700;text-align: center;">Bons plans</p>
     <mat-divider></mat-divider>

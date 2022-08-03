@@ -12,13 +12,25 @@
 }
 
 .imground{
-    width: 35px;
-    margin: 10px;
+    width: 49px;
+    height: 65px;
 }
 
 .p-text{
  color: #000000;
  font-weight: 500;
+}
+
+.titleinfo{
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    color: #707073;
+    width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .col-div{
@@ -32,4 +44,10 @@
 
 .btn-lg{
  background: linear-gradient(91.85deg, #0C1733 2.48%, #236CBD 58.09%);
+}
+
+.imgSlide{
+    margin: 126px auto 20px;
+    display: block;
+    max-width: 55%;
 }

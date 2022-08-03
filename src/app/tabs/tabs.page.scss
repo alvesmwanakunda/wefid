@@ -69,7 +69,11 @@ ion-tab-button {
   }
 }
 
-ion-tab-bar {
+ion-tab-bar{
+  background-color:  #243665 !important;
+}
+
+/*ion-tab-bar {
   &:before {
     box-shadow: 0 339px 0 300px #243665;
     position: absolute;
@@ -80,7 +84,7 @@ ion-tab-bar {
     -webkit-border-radius:50%;
     content: "";
   }
-}
+}*/
 
 .inner-left-btn {
   border-top-left-radius: 20px 20px;
@@ -92,8 +96,13 @@ ion-tab-bar {
 
 .inner-center-btn {
   position: absolute;
-  left: calc(52% - 34px); // position your button in the center
-  bottom: 49px; // position your button slightly above the half bezel
+  left: calc(52% - 35px); // position your button in the center
+  bottom: 6px; // position your button slightly above the half bezel
   font-size: 55px;
   --background: transparent;
+}
+
+.btn-ml{
+  position: relative;
+  bottom: 7px;
 }

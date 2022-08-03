@@ -13,12 +13,13 @@
     <ion-row>
        <ion-col>
         <div class="roundCat">
-          <img src="assets/images/auchan2.png" class="imground">
+          <img src="data:image/png;base64,{{entreprise?.image}}"  class="imground" *ngIf="entreprise?.image">
+          <img src="assets/images/icon.png"  class="imground" *ngIf="!entreprise?.image">
         </div>
        </ion-col>
        <ion-col>
-        <p class="p-text">Auchan</p>
-        <span style="font-size:9px;position:relative;bottom:24px;">Il y'a 1h</span>
+        <p class="p-text">{{entreprise?.nom}}</p>
+        <!--<span style="font-size:9px;position:relative;bottom:24px;">Il y'a 1h</span>-->
        </ion-col>
        <ion-col>
          <div align="right">
@@ -31,19 +32,22 @@
   </div>
 
   <div class="ion-padding">
-    <ion-row>
+    <ion-row *ngFor="let m of message">
       <ion-col size="1"></ion-col>
       <ion-col size="11">
         <ion-card style="background-color:#F6F7F9;">
           <ion-card-content class="ion-padding">
-            <p style="color:#323635;font-weight:500;font-size:13px;">MEGA PROMO</p>
-            <p style="font-size:12px;">
-              totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+            <p style="color:#323635;font-weight:500;font-size:13px;">{{m?.message?.nom}}</p>
+            <div *ngIf="m?.message?.photo">
+              <img src="data:image/png;base64,{{m?.message?.photo}}">
+            </div>
+            <p style="font-size:11px;color: #000000;">
+              {{m?.message?.message}}
             </p>
           </ion-card-content>  
         </ion-card>
         <div align="right">
-          <p style="font-size:12px;color:#9A9A9A;">15 oct 2021  4:15 PM</p>
+          <p style="font-size:12px;color:#9A9A9A;">{{m?.dateCreated | dataAsAgoPipe }}</p>
         </div>
       </ion-col>
     </ion-row><!--ion-row-->

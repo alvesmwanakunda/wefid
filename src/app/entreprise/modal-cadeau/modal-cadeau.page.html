@@ -8,14 +8,16 @@
   <div>
     <ion-list>
       <ion-card class="card-hd" *ngFor="let cd of cadeaux">
-        <ion-card-content class="content-card" (click)="openDialogCadeau(cd?._id)">
+        <ion-card-content class="content-card" >
           <ion-grid>
             <ion-row>
               <ion-col>
-                <img src="data:image/png;base64,{{cd?.produit?.photo}}" class="imgproduit" *ngIf="cd?.produit?.photo">
-                <img src="assets/images/icon.png" class="imgproduit" *ngIf="!cd?.produit?.photo">
+                
+                  <img src="data:image/png;base64,{{cd?.produit?.photo}}" class="imgproduit" *ngIf="cd?.produit?.photo" (click)="openDialogCadeauImage(cd?._id)">
+                  <img src="assets/images/icon.png" class="imgproduit" *ngIf="!cd?.produit?.photo" (click)="openDialogCadeauImage(cd?._id)">
+                
               </ion-col>
-              <ion-col>
+              <ion-col (click)="openDialogCadeau(cd?._id)">
                 <div style="position: relative;top:7px;">
                   <p class="titleclientprod" *ngIf="cd?.typeCadeau!='Livraison'">{{cd?.produit?.nom}}</p>
                   <p class="titleclientprod" *ngIf="cd?.typeCadeau=='Livraison'">({{cd?.nombreLivraison}}) Livraison</p>
@@ -23,7 +25,7 @@
                   <!--<button mat-raised-button class="btnmodal" (click)="openDialogCadeau(cd?._id)"><span style="position:relative;bottom:5px;">Détail</span></button>-->
                 </div>
               </ion-col>
-              <ion-col style="text-align: right;">
+              <ion-col style="text-align: right;" (click)="openDialogCadeau(cd?._id)">
                 <p style="text-align: right;color: #363853;" class="titlenumber">{{cd?.point}} <small>Pts</small></p>
                 <p style="text-align: right;color: #243665;">{{cd?.typesPoint?.nom}}</p>
               </ion-col>

@@ -1,87 +1,92 @@
 <ion-content [fullscreen]="true">
 
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="circles" pullingIcon="chevron-down-circle-outline"></ion-refresher-content>
+  </ion-refresher>
+
   <div style="padding-top: 20px" class="ion-padding">
     <p style="font-size: 32px;font-weight: 700;text-align: center;">Messages</p>
     <mat-divider></mat-divider>
   </div>
 
-  <div class="ion-padding">
-    <ion-row style="width: 100%;">
-      <ion-col size="4" align="left">
-        <button mat-button style="color:#2F416D;font-size: 12px;">Selectionné</button>
-      </ion-col>
-      <ion-col size="4" align="center">
-        <button mat-button style="color:#52E34F;font-size: 12px;">Annuler</button>
-      </ion-col>
-      <ion-col size="4">
-        <button mat-button style="color:#FF0000;font-size: 12px;">Supprimer</button>
-      </ion-col>
-    </ion-row>    
-  </div>
 
-  <div>
-    <ion-item-sliding >
-      <ion-item class="ion-no-padding" lines="none">
-        <ion-card class="card-cnt" (click)="presentModal()">
-          <ion-card-content class="ion-no-padding">
-            <ion-row style="width: 100%;">
-              <ion-col size="2">
-                <div class="roundCat">
-                  <img src="assets/images/auchan2.png" class="imground">
-                </div>
-              </ion-col>
-              <ion-col size="7">
-                <div class="col-div">
-                  <p class="p-text">Auchan</p>
-                  <span style="font-size:9px;">Lorem ipsum dolor sit…</span>
-                </div>
-              </ion-col>
-              <ion-col size="3">
-                <div style="padding-top: 12px;float:right;">
-                  <p style="font-size:9px;">4 jour(s)</p>
-                  <ion-badge color="success" style="border-radius: 45%;">41</ion-badge>
-                </div>
-              </ion-col>
-            </ion-row>
-          </ion-card-content>
-        </ion-card>    
-      </ion-item>
+  <div *ngIf="message.length>0">
 
-      <ion-item-options side="end">
-        <button ion-button class="btn-lg">X</button>
-      </ion-item-options>
-    </ion-item-sliding><!--sliding-->
+    <div class="ion-padding">
+      <ion-row style="width: 100%;">
+        <ion-col size="4" align="left">
+          <button mat-button style="color:#2F416D;font-size: 12px;" (click)="onSelected()" *ngIf="!isSelected">Selectionné</button>
+        </ion-col>
+        <ion-col size="4" align="center" *ngIf="isSelected">
+          <button mat-button style="color:#52E34F;font-size: 12px;"  (click)="onSelected();disableOptions()" >Annuler</button>
+        </ion-col>
+        <ion-col size="4" *ngIf="isSelected">
+          <button mat-button style="color:#FF0000;font-size: 12px;" (click)="deleteAllMany()">Supprimer</button>
+        </ion-col>
+      </ion-row>    
+    </div>
+  
+    <div *ngFor="let m of message; let i=index">
+  
+     <ion-row style="width: 100%;">
+  
+      <ion-col [size]="isSelected==true ? 2 : 0" class="ion-no-padding" align="left">
+         <div style="position:relative;left:25px;top:26px;">
+          <p>
+            <!--<mat-checkbox [checked]="checked"> </mat-checkbox>-->
+            <input #myCheckbox type="checkbox" (change)="selectedData($event,m?._id._id)">
+          </p>
+         </div>
+      </ion-col><!--4-->
+  
+      <ion-col  [size]="isSelected==true ? 10 : 12" class="ion-no-padding">
+  
+        <ion-item-sliding>
+          <ion-item class="ion-no-padding" lines="none">
+            <ion-card class="card-cnt" (click)="presentModal(m?._id._id)">
+              <ion-card-content class="ion-no-padding">
+                <ion-row style="width: 100%;">
+                  <ion-col size="2" class="ion-no-padding">
+                    <div>
+                      <img src="data:image/png;base64,{{m?._id.image}}"  class="imground" *ngIf="m?._id.image">
+                      <img src="assets/images/icon.png"  class="imground" *ngIf="!m?._id.image">
+                    </div>
+                  </ion-col>
+                  <ion-col size="7">
+                    <div class="col-div">
+                      <p class="p-text">{{m?._id.nom}}</p>
+                      <p class="titleinfo">{{m?._id?.description}}</p>
+                    </div>
+                  </ion-col>
+                  <ion-col size="3">
+                    <div style="padding-top: 12px;float:right;">
+                      <p style="font-size:9px;">{{m?.date | dataAsAgoPipe }}</p>
+                      <ion-badge color="success" style="border-radius: 45%;" *ngIf="m?.nombre>0">{{m?.nombre}}</ion-badge>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>    
+          </ion-item>
+    
+          <ion-item-options side="end">
+            <button ion-button class="btn-lg" (click)="deleteAllMany()">X</button>
+          </ion-item-options>
+    
+        </ion-item-sliding><!--sliding-->
+  
+      </ion-col><!--8-->
+  
+     </ion-row><!--row--> 
+  
+    </div>
 
-    <ion-item-sliding>
-      <ion-item class="ion-no-padding" lines="none">
-        <ion-card class="card-cnt">
-          <ion-card-content class="ion-no-padding">
-            <ion-row style="width: 100%;">
-              <ion-col size="2">
-                <div class="roundCat">
-                  <img src="assets/images/auchan2.png" class="imground">
-                </div>
-              </ion-col>
-              <ion-col size="7">
-                <div class="col-div">
-                  <p class="p-text">Auchan</p>
-                  <span style="font-size:9px;">Lorem ipsum dolor sit…</span>
-                </div>
-              </ion-col>
-              <ion-col size="3">
-                <div style="padding-top: 12px;float:right;">
-                  <p style="font-size:9px;">4 jour(s)</p>
-                  <ion-badge color="success" style="border-radius: 45%;">41</ion-badge>
-                </div>
-              </ion-col>
-            </ion-row>
-          </ion-card-content>
-        </ion-card>    
-      </ion-item>
-      <ion-item-options side="end">
-        <button ion-button class="btn-lg">X</button>
-      </ion-item-options>
-    </ion-item-sliding><!--sliding-->
-  </div>
+  </div><!--Message -->
+
+  <div *ngIf="message.length==0">
+    <img src="assets/images/chat.png" class="imgSlide"> 
+  </div><!--Message vide -->
+
+ 
  
 </ion-content>

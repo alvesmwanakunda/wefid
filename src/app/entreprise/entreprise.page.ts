@@ -4,11 +4,13 @@ import { EntrepriseService } from '../shared/services/entreprise.service';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { QrcodeCadeauPage } from '../qrcode-cadeau/qrcode-cadeau.page';
+import { AdressePage } from './adresse/adresse.page';
 import { ModalCadeauPage } from './modal-cadeau/modal-cadeau.page';
 import { ModalController } from '@ionic/angular';
 import { DetailCadeauPage } from './detail-cadeau/detail-cadeau.page';
 import { Subscription } from 'rxjs';
 import { Platform } from '@ionic/angular';
+import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
 
 
 
@@ -44,6 +46,7 @@ export class EntreprisePage implements OnInit {
     public dialog: MatDialog,
     public modalController: ModalController,
     private platform: Platform,
+    private callNumber: CallNumber
   ) { 
     this.idEntreprise = this.route.snapshot.paramMap.get('id');
     this.getEntreprise(this.route.snapshot.paramMap.get('id'));
@@ -152,6 +155,16 @@ export class EntreprisePage implements OnInit {
     });
   }
 
+  openDialogAdresse(): void {
+    const dialogRef = this.dialog.open(AdressePage, {
+      width: '250px',
+      height:'200px',
+      data:{id:this.idEntreprise}});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed',result);
+    });
+  }
+
   openDialogCadeau(idCadeau): void {
     const dialogRef = this.dialog.open(DetailCadeauPage, {
       width: '350px',
@@ -160,6 +173,8 @@ export class EntreprisePage implements OnInit {
       console.log('The dialog was closed',result);
     });
   }
+
+  
 
   async presentModal() {
     const modal = await this.modalController.create({
@@ -200,9 +215,22 @@ export class EntreprisePage implements OnInit {
   doRefresh(event) {
     console.log('Begin async operation');
     setTimeout(() => {
+      this.getLengthCadeau(this.idEntreprise);
+      this.getLengthDepense(this.idEntreprise);
+      this.getLengthEncaisse(this.idEntreprise);
+      this.listCadeauClient(this.idEntreprise);
+      this.listEncaisse(this.idEntreprise);
+      this.listDepense(this.idEntreprise);
+
       console.log('Async operation has ended');
       event.target.complete();
     }, 200);
+  }
+
+  callNumbres(){
+    this.callNumber.callNumber(this.entreprise?.phone1, true)
+    .then(res => console.log('Launched dialer!', res))
+     .catch(err => console.log('Error launching dialer', err));
   }
 
 }

@@ -6,6 +6,7 @@ import { EntreprisePageRoutingModule } from './entreprise-routing.module';
 import { EntreprisePage } from './entreprise.page';
 import { SharedModule } from '../shared/shared.module';
 import { EntrepriseService } from '../shared/services/entreprise.service';
+import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx'
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { EntrepriseService } from '../shared/services/entreprise.service';
     SharedModule
   ],
   declarations: [EntreprisePage],
-  providers:[EntrepriseService]
+  providers:[EntrepriseService,CallNumber]
 })
 export class EntreprisePageModule {}

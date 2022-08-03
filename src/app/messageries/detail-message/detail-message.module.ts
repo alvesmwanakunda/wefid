@@ -5,6 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { DetailMessagePageRoutingModule } from './detail-message-routing.module';
 import { DetailMessagePage } from './detail-message.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { EntrepriseService } from 'src/app/shared/services/entreprise.service';
+import { ClientService } from 'src/app/shared/services/client.service';
 
 @NgModule({
   imports: [
@@ -14,6 +16,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     DetailMessagePageRoutingModule,
     SharedModule
   ],
-  declarations: [DetailMessagePage]
+  declarations: [DetailMessagePage],
+  providers:[EntrepriseService,ClientService]
 })
 export class DetailMessagePageModule {}

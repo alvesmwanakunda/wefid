@@ -1,12 +1,16 @@
 <ion-tabs>
 
   <!--<ion-icon name="qr-code-outline" class="icon-button inner-center-btn"></ion-icon>-->
-  <ion-fab-button class="inner-center-btn" (click)="openDialog()"><ion-icon name="qr-code-outline"></ion-icon></ion-fab-button>
+  <!--<ion-fab-button class="inner-center-btn"></ion-fab-button>-->
   <!--class="bottom-tab-bar"-->
 
   <!--<div class="btn-float">
 
   </div>-->
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="openDialog()" class="btn-ml"><ion-icon name="qr-code-outline"></ion-icon></ion-fab-button>
+  </ion-fab>
 
   <ion-tab-bar  slot="bottom">
     <ion-tab-button tab="dashboard">
@@ -17,6 +21,10 @@
     <ion-tab-button tab="messageries">
       <ion-icon name="chatbox-ellipses-outline" style="font-size: 19px;"></ion-icon>
       <ion-label>Messageries</ion-label>
+    </ion-tab-button>
+
+
+    <ion-tab-button>
     </ion-tab-button>
 
     

@@ -17,6 +17,6 @@ import { ClientService } from 'src/app/shared/services/client.service';
     SharedModule
   ],
   declarations: [ParamPasswordPage],
-  exports:[ClientService]
+  providers:[ClientService]
 })
 export class ParamPasswordPageModule {}

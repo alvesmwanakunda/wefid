@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "293520386706",
+    "project_id": "wefid1504",
+    "storage_bucket": "wefid1504.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293520386706:android:f3518c89a579d0a331944b",
+        "android_client_info": {
+          "package_name": "io.wefid.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "293520386706-uos77gveacpm153ldc6qio2h3snerp04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAx8X3TQ2f9B04Q5L6JtNKHOMHzzBAY6G8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "293520386706-uos77gveacpm153ldc6qio2h3snerp04.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

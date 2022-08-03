@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Platform } from '@ionic/angular';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-parametres',
@@ -15,6 +16,7 @@ export class ParametresPage implements OnInit {
 
   constructor(
     private platform: Platform,
+    private authService: AuthService
   ) {
     this.subscriptions.add(
       this.platform.backButton.subscribeWithPriority(9999, (processNextHandler)=>{
@@ -35,6 +37,10 @@ export class ParametresPage implements OnInit {
   }
   ionViewWillLeave(){
     this.isCurrentView = false;
+  }
+
+  logout():void{
+    this.authService.logout();
   }
 
 }

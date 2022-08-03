@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { ParametresPageRoutingModule } from './parametres-routing.module';
 import { ParametresPage } from './parametres.page';
 import { SharedModule } from '../shared/shared.module';
+import { AuthService } from '../shared/services/auth.service';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { SharedModule } from '../shared/shared.module';
     ParametresPageRoutingModule,
     SharedModule
   ],
-  declarations: [ParametresPage]
+  declarations: [ParametresPage],
+  providers:[AuthService]
 })
 export class ParametresPageModule {}

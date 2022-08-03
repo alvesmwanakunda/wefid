@@ -7,6 +7,8 @@ import { Router} from "@angular/router";
 import { IonInfiniteScroll, IonVirtualScroll } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Platform } from '@ionic/angular';
+import { ClientService } from '../shared/services/client.service';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 
 
 
@@ -50,9 +52,12 @@ export class DashboardPage implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     private platform: Platform,
+    private clientService: ClientService,
+    private qrScanner: BarcodeScanner
     ) { 
-      this.user = JSON.parse(localStorage.getItem('user'));
-      console.log("User", this.user);
+      //this.user = JSON.parse(localStorage.getItem('user'));
+      //console.log("User", this.user);
+      this.getUser();
       this.subscriptions.add(
         this.platform.backButton.subscribeWithPriority(9999, (processNextHandler)=>{
           if(this.isCurrentView){
@@ -68,6 +73,16 @@ export class DashboardPage implements OnInit {
 
     this.getEntreprise();
     this.getOperations();
+  }
+
+  getUser(){
+    this.clientService.getUser().subscribe((res:any)=>{
+      try {
+        this.user = res.message;
+      } catch (error) {
+        console.log("Erreur", error);
+      }
+    })
   }
 
   getEntreprise(){
@@ -193,6 +208,9 @@ export class DashboardPage implements OnInit {
     console.log('Begin async operation');
     setTimeout(() => {
       console.log('Async operation has ended');
+      this.getUser();
+      this.getEntreprise();
+      this.getOperations();
       event.target.complete();
     }, 200);
   }
@@ -202,5 +220,22 @@ export class DashboardPage implements OnInit {
   }
   ionViewWillLeave(){
     this.isCurrentView = false;
+  }
+
+  scanner(){
+
+    const options : BarcodeScannerOptions={
+      preferFrontCamera:false,
+      showFlipCameraButton:true,
+      showTorchButton:false,
+      torchOn:false,
+      prompt:'Placer un code-barres à l\'intérieur de la zone de numérisation',
+      resultDisplayDuration:100,
+      orientation:'portrait'
+    };
+
+    this.qrScanner.scan(options).then(res=>{
+      console.log('Scanned sommething', res);
+      }).catch((e:any)=> console.log('Error is', e.name));
   }
 }

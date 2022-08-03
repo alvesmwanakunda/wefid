@@ -10,7 +10,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SharedModule } from './shared/shared.module';
 import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtService } from './shared/interceptors/jwt.service';
-
+//import { FirebaseX } from '@awesome-cordova-plugins/firebase-x/ngx';
+//import { FCM } from '@ionic-native/fcm/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,8 @@ import { JwtService } from './shared/interceptors/jwt.service';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass:JwtService, multi:true},
+    //FirebaseX,
+    //FCM
     //HttpClient
   ],
   bootstrap: [AppComponent],

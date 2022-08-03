@@ -3,6 +3,8 @@ import { ModalController } from '@ionic/angular';
 import { EntrepriseService } from 'src/app/shared/services/entreprise.service';
 import { DetailCadeauPage } from '../detail-cadeau/detail-cadeau.page';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ImageCadeauPage } from '../image-cadeau/image-cadeau.page';
+
 
 
 
@@ -51,6 +53,15 @@ export class ModalCadeauPage implements OnInit {
 
   openDialogCadeau(idCadeau): void {
     const dialogRef = this.dialog.open(DetailCadeauPage, {
+      width: '350px',
+      data:{id:idCadeau}});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed',result);
+    });
+  }
+
+  openDialogCadeauImage(idCadeau): void {
+    const dialogRef = this.dialog.open(ImageCadeauPage, {
       width: '350px',
       data:{id:idCadeau}});
     dialogRef.afterClosed().subscribe(result => {

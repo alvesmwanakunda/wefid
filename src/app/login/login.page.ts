@@ -34,6 +34,7 @@ export class LoginPage implements OnInit {
   ]);
   ios:boolean;
   android:boolean;
+  messageSpace:any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -112,9 +113,14 @@ export class LoginPage implements OnInit {
         if (!response.success) {
           this.loginFormErrors["emailorphone"].notfound = true;
         } else {
-          console.log("Reponse", response.message);
-          this.authService.setUser(response.message);
-          this.handleRedirectOnLogin(response.message);
+          if(response.message.user.role=="user"){
+
+            this.authService.setUser(response.message);
+            this.handleRedirectOnLogin(response.message);
+
+          }else{
+            this.loginFormErrors["emailorphone"].notfound = true;
+          }
         }
         this.onLoadForm = false;
       })
@@ -137,5 +143,13 @@ export class LoginPage implements OnInit {
     const {role,data}=await loading.onDidDismiss();
     console.log('Loading dismessed!');
   }
+
+  eventHandler(event) {
+    console.log(event.keyCode);
+    if(event.keyCode == 32){
+      //your code
+      this.messageSpace = "Veuillez respecter le format requis (77xxxxxxx)";
+  }
+ }
 
 }

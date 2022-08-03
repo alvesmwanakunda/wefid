@@ -20,6 +20,11 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatBadgeModule} from '@angular/material/badge';
+import { ZoomPanDirectiveDirective } from './directives/zoom-pan-directive.directive';
+import { DataAsAgoPipePipe } from './pipes/data-as-ago-pipe.pipe';
+import {MatRadioModule} from '@angular/material/radio';
+
+
 
 
 
@@ -27,7 +32,10 @@ import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ZoomPanDirectiveDirective,
+    DataAsAgoPipePipe
+  ],
   imports: [
     CommonModule,
     MatCardModule,
@@ -49,7 +57,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatFormFieldModule,
     MatMenuModule,
     MatProgressSpinnerModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatRadioModule
   ],
   exports:[
     MatCardModule,
@@ -71,7 +80,9 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatFormFieldModule,
     MatMenuModule,
     MatProgressSpinnerModule,
-    MatBadgeModule
+    MatBadgeModule,
+    DataAsAgoPipePipe,
+    MatRadioModule
   ]
 })
 export class SharedModule { }

@@ -15,10 +15,13 @@ export class InfosPage implements OnInit {
 
   user:any;
   userForm: FormGroup;
+  isInfo:boolean=false;
+  age:any;
 
   private isCurrentView:boolean;
   private displayWarning:boolean;
   subscriptions: Subscription = new Subscription();
+  dateNaissance:any;
 
   constructor(
     private clientService:ClientService,
@@ -48,19 +51,35 @@ export class InfosPage implements OnInit {
     this.isCurrentView = false;
   }
 
+  getAge(dateString){
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    this.age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+    {
+        this.age--;
+    }
+    console.log("Age", this.age);
+    return this.age;
+  }
+
   getUser(){
     this.clientService.getUser().subscribe((res:any)=>{
       try {
            console.log("User",res);
            this.user = res.message;
+
            if(this.user){
+            this.getAge(res.message.dateNaissance);
+            this.user.dateNaissance = new Date(this.user?.dateNaissance).toISOString().split('T')[0];
             this.userForm = new FormGroup({
               nom:new FormControl(this.user?.user.nom,[Validators.required]),
               prenom: new FormControl(this.user?.user.prenom,[Validators.required]),
               phone: new FormControl(this.user?.user.phone,null),
               genre:new FormControl(this.user.genre,[Validators.required]),
               adresse:new FormControl(this.user.adresse,[Validators.required]),
-              age: new FormControl(this.user.age,[Validators.required])
+              age: new FormControl(this.user.dateNaissance,[Validators.required])
             })
            }
       } catch (error) {
@@ -75,7 +94,7 @@ export class InfosPage implements OnInit {
       prenom:user.user.prenom,
       genre:user.genre,
       adresse:user.adresse,
-      age:user.age
+      age:user.dateNaissance,
     }
     console.log("Payload",payload);
     this.loadingPresent("ifOfLoading").then((res)=>{
@@ -135,6 +154,14 @@ export class InfosPage implements OnInit {
       cssClass: 'my-custom-class-error',
     });
     myToast.present();
+  }
+
+  openInfo(){
+    if(this.isInfo){
+      this.isInfo=false;
+    }else{
+      this.isInfo = true;
+    }
   }
 
 }

@@ -68,8 +68,10 @@
     font-weight: 500;
     font-size: 10px;
     color: #707073;
-    //line-height: 24px;
-    //color: #BDBDBD;
+    width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .dnumber{

@@ -37,6 +37,11 @@
           <button ion-button class="div_btn"><ion-icon name="flag-outline"></ion-icon></button> Mentions légales & Politique de confidentialité
         </ion-label>
       </ion-item>
+      <ion-item (click)="logout()">
+        <ion-label class="text_label">
+          <button ion-button class="div_btn"><ion-icon name="power-outline"></ion-icon></button> Déconnexion
+        </ion-label>
+      </ion-item>
     </ion-list>  
   </div>
   <div class="ion-padding">
@@ -49,8 +54,9 @@
       <img src="assets/images/linkedin.png" width="36px" style="margin-right:7px;">
       <img src="assets/images/facebook.png" width="36px">
     </div>
+
     <div align="center" style="padding-top: 15px;">
-      <button mat-button style="color:#FF0000;">Supprimer le compte</button>
+      <button mat-button style="color:#FF0000;"><ion-icon name="trash-outline"></ion-icon> Supprimer le compte</button>
     </div>
     <br/><br/><br/><br/>
   </div><!--icon-->
