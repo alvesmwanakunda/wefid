@@ -25,12 +25,6 @@ import { DataAsAgoPipePipe } from './pipes/data-as-ago-pipe.pipe';
 import {MatRadioModule} from '@angular/material/radio';
 
 
-
-
-
-
-
-
 @NgModule({
   declarations: [
     ZoomPanDirectiveDirective,
@@ -83,6 +77,6 @@ import {MatRadioModule} from '@angular/material/radio';
     MatBadgeModule,
     DataAsAgoPipePipe,
     MatRadioModule
-  ]
+  ],
 })
 export class SharedModule { }

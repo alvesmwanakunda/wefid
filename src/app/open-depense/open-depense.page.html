@@ -1,9 +1,16 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>openDepense</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>
+<div style="margin-bottom:10px;">
+  <p style="text-align:center;font-size: 14px;">Total points dépensés</p>
+  <mat-divider></mat-divider>
+</div>
+<div>
+ <ion-row>
+   <ion-col>
+      <p style="color:#000000;font-size:12px;font-weight:bold;text-align:center">Point visite</p>
+      <p style="color:#FF0000;font-size:12px;font-weight:bold;text-align:center;">{{visite?.point}}</p>
+   </ion-col>
+   <ion-col>
+     <p style="color:#000000;font-size:12px;font-weight:bold;text-align:center">Point achat</p>
+     <p style="color:#FF0000;font-size:12px;font-weight:bold;text-align:center;">{{achat?.point}}</p>
+   </ion-col>
+ </ion-row>
+</div>

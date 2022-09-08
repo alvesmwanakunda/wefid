@@ -84,54 +84,24 @@
         </ion-row>
     </div><!--Categories-->
 
-    <div style="padding-top: 20px;" *ngIf="operations.length==0 && isEntreprise">
-      <ion-list *ngIf="entreprises.length>=1">
-            <ion-row *ngFor="let entreprise of entreprises">
-              <ion-col size="3" (click)="detailEntreprise(entreprise?._id)">
-                <img src="data:image/png;base64,{{entreprise.image}}" class="imgproduit" *ngIf="entreprise.image">
-                <img src="assets/images/icon.png" class="imgproduit" *ngIf="!entreprise.image">
-              </ion-col><!--col-->
-              <ion-col size="9" (click)="detailEntreprise(entreprise?._id)">
-                <ion-item>
-                  <div>
-                    <p class="titleclient">{{entreprise?.nom}}</p>
-                    <p class="titleinfo" style="position: relative;bottom: 9px;" *ngIf="entreprise?.adresse">{{entreprise?.adresse}}</p>
-                    <span class="titleinfo" style="position: relative;bottom: 21px;">{{entreprise?.creation | date: "MMM dd YYYY,THH:MM"}}</span>
-                  </div>
-                  <div class="dnumber">
-                    <p style="font-size: 13px;" class="titlenumber"><span style="color: #52E34F;">+</span> 0</p>
-                  </div>
-  
-                </ion-item>
-              </ion-col><!--col-->
-            </ion-row>
-            <br/>
-      </ion-list>
-      <div *ngIf="entreprises.length==0">
-        <div class="ion-padding" align="center">
-          <img src="assets/images/commerce.png" class="imgno"/>
-          <p style="font-size: 11px;text-align: center;">Pas de commerces disponibles</p>
-          <br/><br/>
-        </div>
-      </div> 
-    </div><!--Liste sans visite-->
-
-    <div style="padding-top: 20px;" *ngIf="operations.length>=1 && !isEntreprise">
+    
+    <div style="padding-top: 20px;" *ngIf="operations.length>=1">
       <ion-list>
          <ion-row *ngFor="let operation of operations">
-            <ion-col size="3" (click)="detailEntreprise(operation?.entreprise?._id)">
-              <img src="data:image/png;base64,{{operation?.entreprise.image}}" class="imgproduit" *ngIf="operation?.entreprise.image">
-              <img src="assets/images/icon.png" class="imgproduit" *ngIf="!operation?.entreprise.image">
+            <ion-col size="3" (click)="detailEntreprise(operation?._id)">
+              <img src="data:image/png;base64,{{operation?.image}}" class="imgproduit" *ngIf="operation?.image">
+              <img src="assets/images/icon.png" class="imgproduit" *ngIf="!operation?.image">
             </ion-col><!--col-->
-            <ion-col size="9" (click)="detailEntreprise(operation?.entreprise?._id)">
+            <ion-col size="9" (click)="detailEntreprise(operation?._id)">
               <ion-item>
                 <div>
-                  <p class="titleclient">{{operation?.entreprise?.nom}}</p>
-                  <p class="titleinfo" style="position: relative;bottom: 9px;" *ngIf="operation?.entreprise?.adresse">{{operation?.entreprise?.adresse}}</p>
-                  <span class="titleinfo" style="position: relative;bottom: 21px;">{{operation?.entreprise?.creation | date: "MMM dd YYYY, hh:mm"}}</span>
+                  <p class="titleclient">{{operation?.nom}}</p>
+                  <p class="titleinfo" style="position: relative;bottom: 9px;" *ngIf="operation?.adresse">{{operation?.entreprise?.adresse}}</p>
+                  <span class="titleinfo" style="position: relative;bottom: 21px;">{{operation?.creation | date: "MMMM dd YYYY"}}</span>
                 </div>
                 <div class="dnumber">
-                  <p style="font-size: 13px;" class="titlenumber"><span style="color: #52E34F;">+</span> {{operation?.point}}</p>
+                  <p style="font-size: 13px;" class="titlenumber" *ngIf="operation.point"><span style="color: #52E34F;">+</span> {{operation?.point}}</p>
+                  <p style="font-size: 13px;" class="titlenumber" *ngIf="!operation.point"><span style="color: #52E34F;">+</span> 0</p>
                 </div>
 
               </ion-item>
@@ -139,9 +109,15 @@
          </ion-row>
          <br/>
       </ion-list>
+
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content>
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
     </div><!--Liste sans visite-->
 
-    <div *ngIf="operations.length==0 && !isEntreprise">
+    <div *ngIf="operations.length==0">
         <div class="ion-padding" align="center">
           <img src="assets/images/commerce.png" class="imgno"/>
           <p style="font-size: 11px;text-align: center;">Pas de commerces disponibles</p>

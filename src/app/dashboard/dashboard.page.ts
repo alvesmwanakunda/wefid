@@ -53,7 +53,8 @@ export class DashboardPage implements OnInit {
     private router: Router,
     private platform: Platform,
     private clientService: ClientService,
-    private qrScanner: BarcodeScanner
+    private qrScanner: BarcodeScanner,
+
     ) { 
       //this.user = JSON.parse(localStorage.getItem('user'));
       //console.log("User", this.user);
@@ -88,7 +89,7 @@ export class DashboardPage implements OnInit {
   getEntreprise(){
     this.entrepriseService.getAllEntreprise().subscribe((res:any)=>{
       try {
-         //console.log("Entreprises", res);
+          console.log("Entreprises", res.message);
           this.entreprises = res.message;
           /*if(this.entreprises.lenght>=1){
             this.isEntreprise=true;
@@ -101,16 +102,10 @@ export class DashboardPage implements OnInit {
   }
 
   getOperations(){
-    this.entrepriseService.getOperationByClient().subscribe((res:any)=>{
+    this.entrepriseService.getAllEntrepriseByClient().subscribe((res:any)=>{
       try {
-          //console.log("Mes operations",res);
-          this.operations = res.message;
-          if(this.operations.length>=1){
-            this.isEntreprise=false;
-            console.log("Ici", this.isEntreprise);
-          }else{
-            this.isEntreprise=true;
-          }
+          console.log("Mes operations",res.message);
+          this.operations = res.message.slice(0, 3);
       } catch (error) {
         console.log("Erreur", error);
       }
@@ -121,22 +116,23 @@ export class DashboardPage implements OnInit {
    console.log("Categorie", categorie);
    //this.isEntreprise=false;
 
-   if(!this.isEntreprise){
+   //if(!this.isEntreprise){
      if(categorie!="All"){
       this.status = categorie; 
-      this.entrepriseService.getOperationByClient().subscribe((res:any) =>{
-        this.operations = res.message.filter(product=>product.entreprise.categorie==categorie);
+      this.entrepriseService.getAllEntrepriseByClient().subscribe((res:any) =>{
+        this.operations = res.message.filter(product=>product.categorie==categorie);
         console.log("Categorie ", this.operations.length);
       });
      }else{
       this.status = "All"; 
-      this.entrepriseService.getOperationByClient().subscribe((res:any) =>{
+      this.entrepriseService.getAllEntrepriseByClient().subscribe((res:any) =>{
         this.operations = res.message
         console.log("Categorie all", this.operations.length);
       });
      }
       
-   }else{
+   //}
+   /* else{
 
     if(categorie!="All"){ 
       this.status =categorie;
@@ -148,7 +144,7 @@ export class DashboardPage implements OnInit {
          .subscribe((res:any) => this.entreprises = res.message);
     }
     
-   }
+   }*/
 
    
   }
@@ -158,16 +154,17 @@ export class DashboardPage implements OnInit {
     const filterValue = (eveent.target as HTMLInputElement).value;
     console.log("Valeur", filterValue);
 
-    if(!this.isEntreprise){
+    //if(!this.isEntreprise){
 
-      this.entrepriseService.getOperationByClient()
-        .subscribe((res:any) => this.operations = res.message.filter(product=>product.entreprise.nom.toLowerCase().includes(filterValue)));
+      this.entrepriseService.getAllEntrepriseByClient()
+        .subscribe((res:any) => this.operations = res.message.filter(product=>product.nom.toLowerCase().includes(filterValue)));
 
-    }else{
+    //}
+    /*else{
 
       this.entrepriseService.getOperationByClient()
         .subscribe((res:any) => this.entreprises = res.message.filter(product=>product.nom.toLowerCase().includes(filterValue)));
-    }
+    }*/
 
   }
 
@@ -238,4 +235,31 @@ export class DashboardPage implements OnInit {
       console.log('Scanned sommething', res);
       }).catch((e:any)=> console.log('Error is', e.name));
   }
+
+  loadData(event){
+    setTimeout(()=>{
+      console.log('Done');
+     
+
+      if(this.status=="All"){
+       
+        this.entrepriseService.getAllEntrepriseByClient().subscribe((res:any) => this.operations = res.message);
+        event.target.complete();
+        if(this.operations.lenght === this.operations.lenght){
+
+          event.target.disabled = true;
+        }
+      }
+      else{
+        this.entrepriseService.getAllEntrepriseByClient().subscribe((res:any) =>{this.operations = res.message.filter(product=>product.categorie==this.status);});
+        event.target.complete();
+        if(this.operations.lenght === this.operations.lenght){
+
+          event.target.disabled = true;
+        }
+      }
+      
+    },2000);
+  }
+
 }

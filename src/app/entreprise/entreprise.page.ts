@@ -11,6 +11,9 @@ import { DetailCadeauPage } from './detail-cadeau/detail-cadeau.page';
 import { Subscription } from 'rxjs';
 import { Platform } from '@ionic/angular';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
+import { ImageCadeauPage } from './image-cadeau/image-cadeau.page';
+import { OpenDepensePage } from '../open-depense/open-depense.page';
+import { OpenEncaissePage } from '../open-encaisse/open-encaisse.page';
 
 
 
@@ -134,7 +137,7 @@ export class EntreprisePage implements OnInit {
     this.entrepriseService.listCadeauClient(idEntreprise).subscribe((res:any)=>{
       try {
            this.cadeaux = res.cadeau;
-           //console.log("Cadeau",res.cadeau);
+           console.log("Cadeau",res.cadeau);
       } catch (error) {
         console.log("Error", error);
       }
@@ -231,6 +234,33 @@ export class EntreprisePage implements OnInit {
     this.callNumber.callNumber(this.entreprise?.phone1, true)
     .then(res => console.log('Launched dialer!', res))
      .catch(err => console.log('Error launching dialer', err));
+  }
+
+  openDialogCadeauImage(idCadeau): void {
+    const dialogRef = this.dialog.open(ImageCadeauPage, {
+      width: '350px',
+      data:{id:idCadeau}});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed',result);
+    });
+  }
+
+  openDialogDepense(): void {
+    const dialogRef = this.dialog.open(OpenDepensePage, {
+      width: '450px',
+      data:{id:this.idEntreprise}});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed',result);
+    });
+  }
+
+  openDialogEncaisse(): void {
+    const dialogRef = this.dialog.open(OpenEncaissePage, {
+      width: '450px',
+      data:{id:this.idEntreprise}});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed',result);
+    });
   }
 
 }

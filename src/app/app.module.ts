@@ -10,6 +10,13 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SharedModule } from './shared/shared.module';
 import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtService } from './shared/interceptors/jwt.service';
+import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx'
+import { registerLocaleData } from '@angular/common';
+import localFr from '@angular/common/locales/fr';
+import { LOCALE_ID } from '@angular/core';
+registerLocaleData(localFr, 'fr');
+
+
 //import { FirebaseX } from '@awesome-cordova-plugins/firebase-x/ngx';
 //import { FCM } from '@ionic-native/fcm/ngx';
 
@@ -20,8 +27,10 @@ import { JwtService } from './shared/interceptors/jwt.service';
   providers: [
     StatusBar,
     SplashScreen,
+    LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass:JwtService, multi:true},
+    {provide:LOCALE_ID, useValue:"fr-FR"}
     //FirebaseX,
     //FCM
     //HttpClient

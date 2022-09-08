@@ -118,7 +118,7 @@ export class AuthService {
   logout() {
      localStorage.removeItem("currentUser");
      localStorage.clear();
-     this.router.navigate(["/"]);
+     this.router.navigate(["/login"]);
   }
 
   isConnected(): boolean {

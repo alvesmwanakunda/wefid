@@ -84,7 +84,7 @@
     </button>
 
     <ion-row>
-      <ion-col class="col-depense">
+      <ion-col class="col-depense" (click)="openDialogEncaisse()">
         <div>
           <img src="assets/images/ribbon.png" class="img-r1">
           <span class="title1">Total points disponibles</span>
@@ -96,7 +96,7 @@
      
       </ion-col><!--ion-col-->
 
-      <ion-col class="col-depense">
+      <ion-col class="col-depense" (click)="openDialogDepense()">
         <div>
           <img src="assets/images/ribbon1.png" class="img-r1">
           <span class="title1">Total points dépensé</span>
@@ -131,7 +131,7 @@
                         <div>
                           <p class="titleclient" *ngIf="dep?.produit?.nom">{{dep?.produit?.nom}}</p>
                           <p class="titleclient" *ngIf="!dep?.produit?.nom">Livraison</p>
-                          <span class="titleinfo">{{dep?.creation | date: "dd MMM YYYY,THH:MM"}}</span>
+                          <span class="titleinfo">{{dep?.creation | date: "MMMM dd YYYY"}}</span>
                         </div>
                         <div class="dnumber">
                           <p style="font-size: 13px;" class="titlenumber"><span style="color: #FF0024;">-</span>  {{dep?.point}}</p>
@@ -160,8 +160,8 @@
               <ion-col size="9">
                 <ion-item>
                   <div>
-                    <p class="titleclient">Type {{en?.type}}</p>
-                    <span class="titleinfo">{{en?.creation | date: "dd MMM YYYY,THH:MM"}}</span>
+                    <p class="titleclient">Point {{en?.type}}</p>
+                    <span class="titleinfo">{{en?.creation | date: "MMMM dd YYYY" }}</span>
                   </div>
                   <div class="dnumber">
                     <p style="font-size: 13px;" class="titlenumber"><span style="color: #52E34F;">+</span> {{en?.point}}</p>
@@ -178,8 +178,8 @@
           <ion-list> 
                  <ion-row *ngFor="let cd of cadeaux">
                     <ion-col size="3">
-                      <img src="data:image/png;base64,{{cd?.produit?.photo}}" class="imgproduit" *ngIf="cd?.produit?.photo">
-                      <img src="assets/images/icon.png" class="imgproduit" *ngIf="!cd?.produit?.photo">
+                      <img src="data:image/png;base64,{{cd?.produit?.photo}}" class="imgproduit" *ngIf="cd?.produit?.photo" (click)="openDialogCadeauImage(cd?._id)">
+                      <img src="assets/images/icon.png" class="imgproduit" *ngIf="!cd?.produit?.photo" (click)="openDialogCadeauImage(cd?._id)">
                     </ion-col>
                     <ion-col size="9">
 

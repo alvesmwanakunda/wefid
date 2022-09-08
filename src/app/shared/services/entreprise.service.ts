@@ -25,6 +25,14 @@ export class EntrepriseService {
      return this.http.get(`${environment.BASE_API_URL}/operations/user`)
    }
 
+   getAllEntrepriseByClient(){
+    return this.http.get(`${environment.BASE_API_URL}/entreprises/comparaison`)
+  }
+
+   getOperationByUser(idEntreprise){
+    return this.http.get(`${environment.BASE_API_URL}/user/operation/${idEntreprise}`)
+  }
+
    getEntrepriseById(idEntreprise){
      return this.http.get(`${environment.BASE_API_URL}/entreprise/id/${idEntreprise}`)
    }
@@ -76,6 +84,16 @@ export class EntrepriseService {
    getLenghtAvoirEncaisse(idEntreprise){
     return this.http.get(`${environment.BASE_API_URL}/avoir/encaisse/length/${idEntreprise}`)
    }
+
+   getLenghtDepenseVisite(idEntreprise){
+    return this.http.get(`${environment.BASE_API_URL}/depense/visite/${idEntreprise}`)
+   }
+
+   getLenghtDepenseAchat(idEntreprise){
+    return this.http.get(`${environment.BASE_API_URL}/depense/achat/${idEntreprise}`)
+   }
+
+
 
    getEncaisseAvoir(idEntreprise){
     return this.http.get(`${environment.BASE_API_URL}/operation/avoir/encaisse/${idEntreprise}`)
