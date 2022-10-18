@@ -14,6 +14,7 @@ import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
 import { ImageCadeauPage } from './image-cadeau/image-cadeau.page';
 import { OpenDepensePage } from '../open-depense/open-depense.page';
 import { OpenEncaissePage } from '../open-encaisse/open-encaisse.page';
+import { NotificationService } from '../shared/services/notification.service';
 
 
 
@@ -49,7 +50,8 @@ export class EntreprisePage implements OnInit {
     public dialog: MatDialog,
     public modalController: ModalController,
     private platform: Platform,
-    private callNumber: CallNumber
+    private callNumber: CallNumber,
+    private notificationService:NotificationService,
   ) { 
     this.idEntreprise = this.route.snapshot.paramMap.get('id');
     this.getEntreprise(this.route.snapshot.paramMap.get('id'));
@@ -67,10 +69,19 @@ export class EntreprisePage implements OnInit {
           processNextHandler();
         }
       })
-    )
+    );
+  
   }
 
   ngOnInit() {
+    this.notificationService.getMessageVisite().subscribe((res:any)=>{
+       console.log("Socket Data", res);
+       this.encaisse = res;
+    });
+    this.notificationService.getMessageDepenseCadeaux().subscribe((res:any)=>{
+      console.log("Socket Depense", res);
+      this.depense = parseInt(this.depense) + parseInt(res);
+    })
     //this.scanne = this.code.split(/,/);
     //console.log("Scanner", this.scanne);
   }

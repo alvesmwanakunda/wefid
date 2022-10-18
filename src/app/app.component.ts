@@ -4,6 +4,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Subscription } from 'rxjs';
 import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
+import { FCM } from '@ionic-native/fcm/ngx';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private localNotifications: LocalNotifications
+    private localNotifications: LocalNotifications,
+    private fcm: FCM
   ) {
       this.initializeApp(); 
       this.subscriptions.add(
@@ -52,6 +54,21 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(()=>{
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      this.fcm.getToken().then(token=>{
+        console.log(token);
+      })
+      this.fcm.onNotification().subscribe(data=>{
+        console.log(data);
+        if(data.wasTapped){
+          console.log('Received in background');
+        }else{
+          console.log('Received in foreground');
+        }
+      });
+      this.fcm.onTokenRefresh().subscribe(token=>{
+        console.log(token);
+      })
     });
   }
 

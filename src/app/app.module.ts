@@ -18,7 +18,7 @@ registerLocaleData(localFr, 'fr');
 
 
 //import { FirebaseX } from '@awesome-cordova-plugins/firebase-x/ngx';
-//import { FCM } from '@ionic-native/fcm/ngx';
+import { FCM } from '@ionic-native/fcm/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,9 +30,9 @@ registerLocaleData(localFr, 'fr');
     LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass:JwtService, multi:true},
-    {provide:LOCALE_ID, useValue:"fr-FR"}
+    {provide:LOCALE_ID, useValue:"fr-FR"},
     //FirebaseX,
-    //FCM
+    FCM
     //HttpClient
   ],
   bootstrap: [AppComponent],

@@ -17,6 +17,10 @@ export class ClientService {
     return this.http.get(`${environment.BASE_API_URL}/user/client`)
   }
 
+  getMessageIsFalse(idClient){
+    return this.http.get(`${environment.BASE_API_URL}/messages/client/${idClient}`)
+  }
+
   updateUser(user){
     return this.http.put(`${environment.BASE_API_URL}/user`,user)
   }

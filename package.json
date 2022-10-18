@@ -25,6 +25,7 @@
     "@awesome-cordova-plugins/call-number": "^5.44.0",
     "@awesome-cordova-plugins/fcm": "^5.44.0",
     "@awesome-cordova-plugins/firebase-x": "^5.44.0",
+    "@awesome-cordova-plugins/keyboard": "^5.45.0",
     "@awesome-cordova-plugins/local-notifications": "^5.44.0",
     "@capacitor/app": "1.1.1",
     "@capacitor/core": "3.4.3",
@@ -47,6 +48,7 @@
     "ng2-validation": "^4.2.0",
     "ngx-bootstrap": "^8.0.0",
     "rxjs": "~6.6.0",
+    "socket.io-client": "^4.5.2",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },

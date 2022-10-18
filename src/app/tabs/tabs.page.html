@@ -8,9 +8,11 @@
 
   </div>-->
 
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="openDialog()" class="btn-ml"><ion-icon name="qr-code-outline"></ion-icon></ion-fab-button>
-  </ion-fab>
+  <div  [ngClass]="fabButtonClass()">
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab-button (click)="openDialog()" class="btn-ml"><ion-icon name="qr-code-outline"></ion-icon></ion-fab-button>
+    </ion-fab>
+  </div>
 
   <ion-tab-bar  slot="bottom">
     <ion-tab-button tab="dashboard">
@@ -20,6 +22,7 @@
 
     <ion-tab-button tab="messageries">
       <ion-icon name="chatbox-ellipses-outline" style="font-size: 19px;"></ion-icon>
+      <ion-badge color="danger" *ngIf="client>0">{{client}}</ion-badge>
       <ion-label>Messageries</ion-label>
     </ion-tab-button>
 
