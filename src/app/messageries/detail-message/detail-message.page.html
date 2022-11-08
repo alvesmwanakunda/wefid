@@ -34,7 +34,7 @@
   <div class="ion-padding">
     <ion-row *ngFor="let m of message">
       <ion-col size="1"></ion-col>
-      <ion-col size="11">
+      <ion-col size="11" *ngIf="m?.type!='promotion'">
         <ion-card style="background-color:#F6F7F9;">
           <ion-card-content class="ion-padding">
             <p style="color:#323635;font-weight:500;font-size:13px;">{{m?.message?.nom}}</p>
@@ -48,6 +48,22 @@
         </ion-card>
         <div align="right">
           <p style="font-size:12px;color:#9A9A9A;">{{m?.dateCreated | dataAsAgoPipe }}</p>
+        </div>
+      </ion-col>
+      <ion-col size="11" *ngIf="m?.type=='promotion'">
+        <ion-card style="background-color:#F6F7F9;">
+          <ion-card-content class="ion-padding">
+            <p style="color:#323635;font-weight:500;font-size:13px;">{{m?.promotion?.nom}}</p>
+            <div *ngIf="m?.promotion?.photo">
+              <img src="data:image/png;base64,{{m?.promotion?.photo}}">
+            </div>
+            <p style="font-size:11px;color: #000000;" [innerHTML]="m?.promotion?.email">
+              {{m?.promotion?.email}}
+            </p>
+          </ion-card-content>  
+        </ion-card>
+        <div align="right">
+          <p style="font-size:12px;color:#9A9A9A;">{{m?.promotion?.dateEnvoie | dataAsAgoPipe }}</p>
         </div>
       </ion-col>
     </ion-row><!--ion-row-->
