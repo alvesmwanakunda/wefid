@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { Platform } from '@ionic/angular';
 import { EntrepriseService } from 'src/app/shared/services/entreprise.service';
 import { ClientService } from 'src/app/shared/services/client.service';
+import { NotificationService } from '../../shared/services/notification.service';
+
 
 
 @Component({
@@ -25,8 +27,9 @@ export class DetailMessagePage implements OnInit {
     private platform: Platform,
     public modalController: ModalController,
     private entrepriseService: EntrepriseService,
-    private clientService:ClientService
-  ) { 
+    private clientService:ClientService,
+    private notificationService:NotificationService,
+  ) {
     this.subscriptions.add(
       this.platform.backButton.subscribeWithPriority(9999, (processNextHandler)=>{
         if(this.isCurrentView){
@@ -60,7 +63,9 @@ export class DetailMessagePage implements OnInit {
     this.clientService.detailMessage(this.idClient,this.idEntreprise).subscribe((res:any)=>{
       try {
         console.log("Messages", res);
-        this.message = res.message;    
+        this.message = res.message;
+        this.notificationService.updateMessageClickEvent();
+
       } catch (error) {
         console.log("Erreur",error);
       }

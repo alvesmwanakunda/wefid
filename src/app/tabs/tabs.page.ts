@@ -4,6 +4,9 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { Platform } from '@ionic/angular';
 import { Keyboard } from '@awesome-cordova-plugins/keyboard/ngx';
 import { ClientService } from '../shared/services/client.service';
+import { NotificationService } from '../shared/services/notification.service';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-tabs',
@@ -13,17 +16,30 @@ import { ClientService } from '../shared/services/client.service';
 export class TabsPage implements OnInit {
 
   client:any;
+  clickMessageEvent: Subscription;
 
   constructor(
     public dialog: MatDialog,
     public platform: Platform,
     private keyboard: Keyboard,
     private clientService: ClientService,
-  ) { }
+    private notificationService:NotificationService,
+  ) {
+     this.clickMessageEvent = this.notificationService.getLengthMessageEvent().subscribe(()=>{
+      this.getClient();
+     })
+  }
 
   ngOnInit() {
 
     this.getClient();
+    this.notificationService.getMessageAppVisite().subscribe((res:any)=>{
+      console.log("Socket Data", res);
+      if(res){
+        this.getClient();
+      }
+
+   });
   }
 
   getClient(){

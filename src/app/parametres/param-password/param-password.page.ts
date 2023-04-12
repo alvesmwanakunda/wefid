@@ -5,6 +5,7 @@ import { CustomValidators } from "ng2-validation";
 import { ClientService } from 'src/app/shared/services/client.service';
 import { Subscription } from 'rxjs';
 import { Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -30,7 +31,8 @@ export class ParamPasswordPage implements OnInit {
     private toast: ToastController,
     private clientService:ClientService,
     private platform: Platform,
-  ) { 
+    private route: Router
+  ) {
     this.passwordFormErrors = {
       lostpassword: {},
       password: {},
@@ -48,7 +50,7 @@ export class ParamPasswordPage implements OnInit {
   }
 
   account_validation_messages={
-   
+
     confirmpassword: [
       { type: "required", message: "Vous devez confirmer le mot de passe" },
       { type: "minlength", message: "Mot de passe incorrect." },
@@ -65,7 +67,7 @@ export class ParamPasswordPage implements OnInit {
     lostpassword:[
       { type: "required", message: "L'ancien mot de passe est obligatoire" },
     ]
-    
+
   };
 
   ngOnInit() {
@@ -138,18 +140,19 @@ export class ParamPasswordPage implements OnInit {
           }else{
             this.loadingDismiss("ifOfLoading");
             this.successToast()
+            this.route.navigate(["tabs/parametres"])
           }
         });
       }else{
         this.loadingDismiss("ifOfLoading");
       }
-     
+
     }).catch((err)=>{
       this.loadingDismiss("ifOfLoading");
-    }) 
+    })
 
 
-    
+
   }
 
   async loadingPresent(loadingId: string) {

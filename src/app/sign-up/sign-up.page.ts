@@ -7,6 +7,7 @@ import { restResponse } from './../shared/models/restResponse';
 import { ClientService } from '../shared/services/client.service';
 import { AlertController, ToastController, LoadingController  } from '@ionic/angular';
 import { Platform } from '@ionic/angular';
+import { AuthService } from '../shared/services/auth.service';
 
 
 
@@ -30,6 +31,7 @@ export class SignUpPage implements OnInit {
   signupFormErrors:any;
   errorMessage: string="";
   user:any;
+  loginUser:any;
   ios:boolean;
   android:boolean;
 
@@ -39,8 +41,9 @@ export class SignUpPage implements OnInit {
     private clientService: ClientService,
     private http: HttpClient,
     private loadingController: LoadingController,
-    public platform: Platform
-  ) { 
+    public platform: Platform,
+    private authService: AuthService,
+  ) {
     this.signupFormErrors={
       emailorphone:{},
     };
@@ -58,7 +61,7 @@ export class SignUpPage implements OnInit {
         message: "Identifiant incorrect. Veuillez reessayer.",
       }
     ],
-  
+
     confirmpassword: [
       { type: "required", message: "Vous devez confirmer le mot de passe" },
       { type: "minlength", message: "Mot de passe incorrect." },
@@ -126,6 +129,7 @@ export class SignUpPage implements OnInit {
     this.onLoadForm = true;
     this.submitted = true;
     this.user = {};
+    this.loginUser ={};
 
     this.loadingPresent("ifOfLoading").then((res)=>{
 
@@ -141,11 +145,15 @@ export class SignUpPage implements OnInit {
             if(response.message["phone"]){
               this.isForm=true;
               this.loadingDismiss("ifOfLoading");
-              this.router.navigate(["login"]);
+              console.log("user", this.user);
+              this.loginUser = {"emailorphone":res.message.phone, "password":this.user.password}
+              this.login(this.loginUser)
+
             }else{
               this.isForm=true;
               this.loadingDismiss("ifOfLoading");
-              this.router.navigate(["login"]);
+              this.loginUser = {"emailorphone":res.message.email, "password":this.user.password}
+              this.login(this.loginUser)
             }
           }
           this.onLoadForm = false;
@@ -189,5 +197,18 @@ export class SignUpPage implements OnInit {
       }).catch((err) => {
         console.log("Erreur", err);
       });
+  }
+
+  login(login){
+    this.authService
+      .signin(login)
+      .then((response) => {
+        this.authService.setUser(response.message);
+        this.router.navigate(["tabs/dashboard"]);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+
   }
 }

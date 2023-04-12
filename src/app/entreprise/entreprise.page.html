@@ -1,25 +1,3 @@
-<!--<ion-header [translucent]="true">
-  <ion-toolbar>
-   <ion-grid>
-    <ion-row>
-      <ion-col>
-        <button mat-button [routerLink]="'/tabs/dashboard'"><mat-icon>keyboard_backspace</mat-icon></button>
-      </ion-col>
-      <ion-col>
-        <ion-title>
-        </ion-title>
-      </ion-col>
-      <ion-col>
-        <button mat-button [matMenuTriggerFor]="menu" style="float:right;"><mat-icon>more_vert</mat-icon></button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="presentModal()">Choisir un cadeau</button>
-          <button mat-menu-item (click)="detailAvoir()">Mes avoirs</button>
-        </mat-menu>
-      </ion-col>
-    </ion-row>
-   </ion-grid>
-  </ion-toolbar>
-</ion-header>-->
 
 <ion-content [fullscreen]="true">
 
@@ -47,7 +25,7 @@
       </ion-col><!--ion-col-->
       <ion-col class="ion-no-padding" (click)="openDialogAdresse()">
         <div class="info_entreprise">
-          <img src="assets/images/map.png" class="phone-img">
+          <img src="assets/images/Adresse.png" class="phone-img">
           <p style="font-size: 11px;text-align: center;color: #243665;">Adresse</p>
         </div>
         <!--<div>
@@ -56,7 +34,7 @@
       </ion-col><!--ion-col-->
       <ion-col class="ion-no-padding" (click)="detailAvoir()">
         <div class="info_entreprise">
-          <img src="assets/images/dollar.png" class="phone-img">
+          <img src="assets/images/Avoir.png" class="phone-img">
           <p style="font-size: 11px;text-align: center;color: #243665;">Mes avoirs</p>
         </div>
         <!--<div>
@@ -65,7 +43,7 @@
       </ion-col><!--ion-col-->
       <ion-col class="ion-no-padding" (click)="presentModal()">
         <div class="info_entreprise">
-          <img src="assets/images/cadeau.png" class="phone-img">
+          <img src="assets/images/gift-box.png" class="phone-img">
           <p style="font-size: 11px;text-align: center;color: #243665;">Cadeaux</p>
         </div>
         <!--<div>
@@ -76,12 +54,15 @@
 
     <p style="font-weight: bold;padding-top: 6px;color: #243665;">{{entreprise?.nom}}</p>
 
-    <p style="font-size: 10px;" [ngClass]="{'limitTextHeight':isReadMore}">
+    <p style="font-size: 10px;" [ngClass]="{'limitTextHeight':isReadMore}" *ngIf="entreprise?.description">
         {{entreprise?.description}}
     </p>
-    <button mat-button (click)="showText()" class="btnShow">
-      <span style="color: #52E34F;font-size: 12px;">{{ isReadMore ? 'Lire plus': 'Lire moins' }} <mat-icon style="position: absolute;top: 8px;" *ngIf="isReadMore">keyboard_arrow_down</mat-icon> <mat-icon style="position: absolute;top: 8px;" *ngIf="!isReadMore">keyboard_arrow_up</mat-icon> </span>
-    </button>
+    <div *ngIf=" entreprise?.description && entreprise?.description?.length > 20 ">
+      <button mat-button (click)="showText()" class="btnShow">
+        <span style="color: #52E34F;font-size: 12px;">{{ isReadMore ? 'Lire plus': 'Lire moins' }} <mat-icon style="position: absolute;top: 8px;" *ngIf="isReadMore">keyboard_arrow_down</mat-icon> <mat-icon style="position: absolute;top: 8px;" *ngIf="!isReadMore">keyboard_arrow_up</mat-icon> </span>
+      </button>
+    </div>
+
 
     <ion-row>
       <ion-col class="col-depense" (click)="openDialogEncaisse()">
@@ -93,7 +74,7 @@
           <span class="number1">{{encaisse}}</span>
         </div>
         <span style="color:#52E34F;font-size: 12px;float: right;">Détail</span>
-     
+
       </ion-col><!--ion-col-->
 
       <ion-col class="col-depense" (click)="openDialogDepense()">
@@ -175,7 +156,7 @@
       </mat-tab>
       <mat-tab label="Cadeaux">
         <div style="padding-top:20px;">
-          <ion-list> 
+          <ion-list>
                  <ion-row *ngFor="let cd of cadeaux">
                     <ion-col size="3">
                       <img src="data:image/png;base64,{{cd?.produit?.photo}}" class="imgproduit" *ngIf="cd?.produit?.photo" (click)="openDialogCadeauImage(cd?._id)">
@@ -201,12 +182,12 @@
                             <button mat-menu-item (click)="openDialog(cd?._id)">
                               <span>Voir Qr code</span>
                             </button>
-                           
+
                           </mat-menu>
                         </div>
                       </ion-item>
                     </ion-col>
-                  
+
                   </ion-row>
                   <br/> <br/>
           </ion-list>
@@ -223,9 +204,9 @@
       <ion-row>
         <ion-col>
           <div class="twitter-like">
-            <mat-spinner 
-                class="track" 
-                mode="determinate" 
+            <mat-spinner
+                class="track"
+                mode="determinate"
                 value="100"
                 diameter="60"
             >
@@ -241,9 +222,9 @@
         </ion-col>
         <ion-col>
           <div class="twitter-like">
-            <mat-spinner 
-                class="track" 
-                mode="determinate" 
+            <mat-spinner
+                class="track"
+                mode="determinate"
                 value="100"
                 diameter="60"
             >
@@ -257,9 +238,9 @@
             <p class="nbre-dd">{{depense}}</p>
           </div>
         </ion-col>
-      </ion-row> 
-    </ion-grid> 
-    
+      </ion-row>
+    </ion-grid>
+
     <div>
       <mat-tab-group dynamicHeight mat-align-tabs="center">
         <mat-tab label="Dépensé">
@@ -349,7 +330,7 @@
                           <button mat-menu-item (click)="openDialog(cd?._id)">
                             <span>Voir Qr code</span>
                           </button>
-                         
+
                         </mat-menu>
                       </ion-col>
                     </ion-row>

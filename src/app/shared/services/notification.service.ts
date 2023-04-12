@@ -11,6 +11,7 @@ export class NotificationService {
   private socket = io(environment.BASE_API_URL);
 
   notificationSubject: BehaviorSubject<string> = new BehaviorSubject('');
+  private subject = new Subject<any>();
 
   constructor() { }
 
@@ -28,6 +29,22 @@ export class NotificationService {
       this.notificationSubject.next(data);
     });
     return this.notificationSubject.asObservable();
+  }
+
+  getMessageAppVisite(){
+    this.socket.on('message_visite', (data)=>{
+      this.notificationSubject.next(data);
+      console.log("Visite");
+    });
+    return this.notificationSubject.asObservable();
+  }
+
+  updateMessageClickEvent(){
+    this.subject.next();
+  }
+
+  getLengthMessageEvent(){
+    return this.subject.asObservable();
   }
 
 }

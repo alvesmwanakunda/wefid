@@ -83,6 +83,10 @@ export class AuthService {
      .catch(this.handleError)
   }
 
+  public deleteCompte(){
+    return this.httpClient.get(`${environment.BASE_API_URL}/delete/compte`);
+  }
+
 
   setUser(user: Object): void {
     localStorage.setItem("user", JSON.stringify(user));

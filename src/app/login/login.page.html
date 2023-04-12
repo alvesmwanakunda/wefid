@@ -5,12 +5,12 @@
     <div class="imgContent">
       <ion-img src="assets/images/logo.png" class="imgLogo"></ion-img>
     </div>
-  
+
     <ion-text>
       <p class="titleSingup">Bienvenue</p>
       <p class="subSignup">Connectez-vous</p>
     </ion-text>
-  
+
     <div style="font-size: 13px;">
 
     <form [formGroup]="loginForm" novalidate>
@@ -32,7 +32,7 @@
       <div *ngIf="messageSpace">
         <p style="color:red;font-size: 13px;font-weight: 400;">{{messageSpace}}</p>
       </div>
-  
+
       <mat-form-field appearance="outline" class="example-full-width">
         <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" placeholder="Mot de passe">
         <mat-icon matPrefix>lock</mat-icon>
@@ -40,7 +40,7 @@
          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
        </button>
       </mat-form-field>
-  
+
       <!--<ion-text>
         <p style="text-align: center;color: #2D8CF6;" [routerLink]="'/password'"></p>
       </ion-text>-->
@@ -48,28 +48,28 @@
       <div align="center">
         <button style="text-align: center;color: #2D8CF6;font-size: 13px;" [routerLink]="'/password'" mat-button>Mot de passe oublié?</button>
       </div>
-  
+
       <div>
         <!--<ion-button expand="block" [disabled]="onLoadForm" type="submit" (click)="onLogin()">Se connecter</ion-button>-->
         <button mat-raised-button class="btn-log" type="submit" (click)="onLogin()">Se connecter</button>
       </div>
 
     </form><!--form-->
-    
+
     </div>
-  
+
      <div>
       <p class="text-barre"> <span *ngIf="ios">Se connecter avec</span></p>
      </div>
-  
+
      <ion-text>
       <p style="text-align: center;font-size: 12px;">Pas de compte?<button style="text-align: center;color: #2D8CF6;font-size: 13px;" [routerLink]="'/sign-up'" mat-button>S'inscire</button></p>
      </ion-text>
-  
-     <div style="text-align: center;" *ngIf="ios">
+
+     <!--<div style="text-align: center;" *ngIf="ios">
       <button mat-raised-button class="btnlogin"><i class="fa-brands fa-apple" style="padding-bottom: 5px;font-size: 20px;"></i> Sign in with Apple</button>
-     </div>
+     </div>-->
 
   </div><!--div-->
-  
+
 </ion-content>

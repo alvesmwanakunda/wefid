@@ -4,6 +4,9 @@ import { Platform } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { DetailMessagePage } from './detail-message/detail-message.page';
 import { ClientService } from '../shared/services/client.service';
+import { NotificationService } from '../shared/services/notification.service';
+
+
 
 @Component({
   selector: 'app-messageries',
@@ -21,11 +24,12 @@ export class MessageriesPage implements OnInit {
     entreprise:""
   };
   messageArray=[];
-  
+
   //desactive button back
   private isCurrentView:boolean;
   private displayWarning:boolean;
   subscriptions: Subscription = new Subscription();
+  clickMessageEvent: Subscription;
 
   @ViewChildren('myCheckbox') myCheckbox: QueryList<ElementRef>;
 
@@ -33,6 +37,7 @@ export class MessageriesPage implements OnInit {
     private platform: Platform,
     public modalController: ModalController,
     private clientService: ClientService,
+    private notificationService:NotificationService,
 
   ) {
     this.subscriptions.add(
@@ -43,11 +48,23 @@ export class MessageriesPage implements OnInit {
           processNextHandler();
         }
       })
-    )
+    );
+    this.clickMessageEvent = this.notificationService.getLengthMessageEvent().subscribe(()=>{
+      this.getClient();
+     })
+
    }
 
   ngOnInit() {
     this.getClient();
+    this.notificationService.getMessageAppVisite().subscribe((res:any)=>{
+      console.log("Socket Data", res);
+      if(res){
+        this.getClient();
+        this.message = res;
+      }
+
+   });
   }
 
   getClient(){
