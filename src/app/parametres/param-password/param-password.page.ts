@@ -177,7 +177,7 @@ export class ParamPasswordPage implements OnInit {
 
   async successToast(){
     let myToast = await this.toast.create({
-      message:'Votre profile a été modifié avec succès',
+      message:'Votre mot de passe a été modifié avec succès',
       duration:3000,
       position:'bottom',
       cssClass: 'my-custom-class',
@@ -187,7 +187,7 @@ export class ParamPasswordPage implements OnInit {
 
   async errorToast(){
     let myToast = await this.toast.create({
-      message:'Une erreur est survenue lors de la modification de profile',
+      message:'Une erreur est survenue lors de la modification de mot de passe',
       duration:3000,
       position:'bottom',
       cssClass: 'my-custom-class-error',

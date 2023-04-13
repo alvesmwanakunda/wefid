@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -28,7 +30,8 @@ export class InfosPage implements OnInit {
     private loadingController:LoadingController,
     private toast: ToastController,
     private platform: Platform,
-    ) { 
+    private route: Router
+    ) {
       this.subscriptions.add(
         this.platform.backButton.subscribeWithPriority(9999, (processNextHandler)=>{
           if(this.isCurrentView){
@@ -56,7 +59,7 @@ export class InfosPage implements OnInit {
     var birthDate = new Date(dateString);
     this.age = today.getFullYear() - birthDate.getFullYear();
     var m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate()))
     {
         this.age--;
     }
@@ -103,8 +106,8 @@ export class InfosPage implements OnInit {
           this.user = res.message;
           this.loadingDismiss("ifOfLoading");
           this.successToast();
-          console.log("User update", res);
           this.getUser();
+          this.route.navigate(["tabs/parametres"])
         } catch (error) {
           console.log("Erreur", error);
           this.loadingDismiss("ifOfLoading");
@@ -113,7 +116,7 @@ export class InfosPage implements OnInit {
       })
     }).catch((err)=>{
       this.loadingDismiss("ifOfLoading");
-    }) 
+    })
   }
 
   async loadingPresent(loadingId: string) {

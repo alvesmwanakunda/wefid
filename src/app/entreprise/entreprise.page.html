@@ -57,7 +57,7 @@
     <p style="font-size: 10px;" [ngClass]="{'limitTextHeight':isReadMore}" *ngIf="entreprise?.description">
         {{entreprise?.description}}
     </p>
-    <div *ngIf=" entreprise?.description && entreprise?.description?.length > 20 ">
+    <div *ngIf=" entreprise?.description && entreprise?.description?.length > 73 ">
       <button mat-button (click)="showText()" class="btnShow">
         <span style="color: #52E34F;font-size: 12px;">{{ isReadMore ? 'Lire plus': 'Lire moins' }} <mat-icon style="position: absolute;top: 8px;" *ngIf="isReadMore">keyboard_arrow_down</mat-icon> <mat-icon style="position: absolute;top: 8px;" *ngIf="!isReadMore">keyboard_arrow_up</mat-icon> </span>
       </button>

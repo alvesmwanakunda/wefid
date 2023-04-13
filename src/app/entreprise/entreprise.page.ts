@@ -52,7 +52,7 @@ export class EntreprisePage implements OnInit {
     private platform: Platform,
     private callNumber: CallNumber,
     private notificationService:NotificationService,
-  ) { 
+  ) {
     this.idEntreprise = this.route.snapshot.paramMap.get('id');
     this.getEntreprise(this.route.snapshot.paramMap.get('id'));
     this.getLengthCadeau(this.route.snapshot.paramMap.get('id'));
@@ -70,7 +70,7 @@ export class EntreprisePage implements OnInit {
         }
       })
     );
-  
+
   }
 
   ngOnInit() {
@@ -90,6 +90,7 @@ export class EntreprisePage implements OnInit {
     this.entrepriseService.getEntrepriseById(idEntreprise).subscribe((res:any)=>{
        try {
              this.entreprise = res.message;
+             console.log("taille", this.entreprise?.description?.length);
        } catch (error) {
          console.log("Erreur", error);
        }
@@ -112,7 +113,7 @@ export class EntreprisePage implements OnInit {
     this.entrepriseService.getLenghtDepense(idEntreprise).subscribe((res:any)=>{
       try {
            console.log("Depense",res);
-           
+
            if(res.depense[0]?.point){
             this.depense = res.depense[0].point;
            }else{
@@ -130,7 +131,7 @@ export class EntreprisePage implements OnInit {
     this.entrepriseService.getLenghtEncaisse(idEntreprise).subscribe((res:any)=>{
       try {
             console.log("Encaisse", res);
-           
+
            if( res.encaisse[0]?.point){
             this.encaisse = res.encaisse[0].point;
            }
@@ -188,7 +189,7 @@ export class EntreprisePage implements OnInit {
     });
   }
 
-  
+
 
   async presentModal() {
     const modal = await this.modalController.create({
