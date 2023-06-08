@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 import { Platform } from '@ionic/angular';
 import { ClientService } from '../shared/services/client.service';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
+import { AuthService } from '../shared/services/auth.service';
 
 
 
@@ -41,6 +42,7 @@ export class DashboardPage implements OnInit {
   qrCode=false;
   user:any;
   status:any="All";
+  //refreshToken:any;
 
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
   @ViewChild(IonVirtualScroll) virtualScroll:   IonVirtualScroll;
@@ -54,10 +56,9 @@ export class DashboardPage implements OnInit {
     private platform: Platform,
     private clientService: ClientService,
     private qrScanner: BarcodeScanner,
-
+    //private authService: AuthService,
     ) { 
-      //this.user = JSON.parse(localStorage.getItem('user'));
-      //console.log("User", this.user);
+      
       this.getUser();
       this.subscriptions.add(
         this.platform.backButton.subscribeWithPriority(9999, (processNextHandler)=>{
@@ -74,6 +75,11 @@ export class DashboardPage implements OnInit {
 
     this.getEntreprise();
     this.getOperations();
+    /*if(this.refreshToken){
+      this.authService.refreshToken(this.refreshToken).subscribe((response:any)=>{
+        this.authService.setAccessToken(response.accessToken);
+      });
+    };*/
   }
 
   getUser(){

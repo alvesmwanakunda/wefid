@@ -44,6 +44,9 @@
             <p style="font-size:11px;color: #000000;">
               {{m?.message?.message}}
             </p>
+            <p *ngIf="m?.message?.isCode" style="font-size:11px;color: #000000;">
+              Ce message contient un QR code de promotion,<button mat-button (click)="openQrcode(m?.message?._id)" style="font-size:11px;color: #000000;">Veuillez ouvrir le QR code</button> 
+            </p>
           </ion-card-content>  
         </ion-card>
         <div align="right">

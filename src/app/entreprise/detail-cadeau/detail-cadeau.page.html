@@ -7,7 +7,8 @@
   </div>
   <div align="center" style="padding-top: 10px;">
     <p class="title_entreprise">
-      <span matBadge="{{cadeau?.point}}" matBadgeColor="accent" matBadgeOverlap="false" *ngIf="cadeau?.typeCadeau!='Livraison'">{{cadeau?.produit?.nom}}</span>
+      <span matBadge="{{cadeau?.point}}" matBadgeColor="accent" matBadgeOverlap="false" *ngIf="cadeau?.typeCadeau=='Cadeau'">{{cadeau?.produit?.nom}}</span>
+      <span matBadge="{{cadeau?.point}}" matBadgeColor="accent" matBadgeOverlap="false" *ngIf="cadeau?.typeCadeau=='Reduction'">Reduction de {{cadeau?.montant}}{{cadeau?.devise}}</span>
       <span matBadge="{{cadeau?.point}}" matBadgeColor="accent" matBadgeOverlap="false" *ngIf="cadeau?.typeCadeau=='Livraison'">({{cadeau?.nombreLivraison}}) Livraison</span>
     </p>
     <p class="title_entreprisep">Point {{cadeau?.typesPoint?.nom}}</p>

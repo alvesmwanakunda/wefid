@@ -7,6 +7,7 @@ import { TabsPage } from './tabs.page';
 import { Keyboard } from '@awesome-cordova-plugins/keyboard/ngx';
 import { ClientService } from '../shared/services/client.service';
 
+
 @NgModule({
   imports: [
     CommonModule,

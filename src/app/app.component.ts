@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Subscription } from 'rxjs';
 import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
 import { FCM } from '@ionic-native/fcm/ngx';
+import { IonRouterOutlet } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,6 +19,7 @@ export class AppComponent implements OnInit {
   private isCurrentView:boolean;
   private displayWarning:boolean;
   subscriptions: Subscription = new Subscription()
+  @ViewChild(IonRouterOutlet) routerOutlet: IonRouterOutlet;
 
 
   constructor(
@@ -24,7 +27,8 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private localNotifications: LocalNotifications,
-    private fcm: FCM
+    private fcm: FCM,
+    private router:Router
   ) {
       this.initializeApp(); 
       this.subscriptions.add(
@@ -36,6 +40,12 @@ export class AppComponent implements OnInit {
           }
         })
       )
+      const authToken = localStorage.getItem('accessToken');
+      if(authToken){
+           this.router.navigate(['tabs/dashboard'])
+      }else{
+        this.router.navigate(['/login']);
+      }
   } 
 
   ngOnInit(): void {
@@ -74,8 +84,12 @@ export class AppComponent implements OnInit {
 
   ionViewDidEnter(){
     this.isCurrentView=true;
+    this.routerOutlet.swipeGesture =false;
   }
   ionViewWillLeave(){
     this.isCurrentView = false;
+    this.routerOutlet.swipeGesture =true;
   }
+
+ 
 }

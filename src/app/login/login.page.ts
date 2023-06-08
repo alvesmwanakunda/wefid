@@ -114,10 +114,9 @@ export class LoginPage implements OnInit {
           this.loginFormErrors["emailorphone"].notfound = true;
         } else {
           if(response.message.user.role=="user"){
-
+            this.authService.setAccessToken(response.message.token);
             this.authService.setUser(response.message);
             this.handleRedirectOnLogin(response.message);
-
           }else{
             this.loginFormErrors["emailorphone"].notfound = true;
           }

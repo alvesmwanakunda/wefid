@@ -40,6 +40,10 @@ export class AuthService {
     .catch(this.handleError)
   }
 
+  refreshToken(refreshToken:string){
+    return this.httpClient.post(`${environment.BASE_API_URL}/refresh-token`,{refreshToken})
+  }
+
   public lostPassword(credentials:Object):Promise<any>{
 
     return this.httpClient
@@ -141,5 +145,14 @@ export class AuthService {
 
   updatePassword(body){
     return this.httpClient.post(`${environment.BASE_API_URL}/profil/password`,body)
+  }
+
+  getAccessToken(){
+    return localStorage.getItem('accessToken');
+  }
+
+  setAccessToken(token:string){
+    console.log("Token", token);
+    return localStorage.setItem('accessToken',token);
   }
 }

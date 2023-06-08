@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true" class="ion-padding">
 
-  <div (click)="dismiss()">
+  <div (click)="dismiss()" style="padding-top: 25px">
     <button mat-stroked-button class="btn-back"><mat-icon style="color: #000000;">keyboard_arrow_left</mat-icon></button>
     <ion-text style="color:#323635;font-weight: 700;"><p class="txt-title">Liste des cadeaux</p></ion-text>
   </div>
@@ -19,7 +19,7 @@
               </ion-col>
               <ion-col (click)="openDialogCadeau(cd?._id)">
                 <div style="position: relative;top:7px;">
-                  <p class="titleclientprod" *ngIf="cd?.typeCadeau!='Livraison'">{{cd?.produit?.nom}}</p>
+                  <p class="titleclientprod" *ngIf="cd?.typeCadeau!='Livraison'">{{cd?.typeCadeau}}</p>
                   <p class="titleclientprod" *ngIf="cd?.typeCadeau=='Livraison'">({{cd?.nombreLivraison}}) Livraison</p>
                   <p style="color:#49C120;">Détail</p>
                   <!--<button mat-raised-button class="btnmodal" (click)="openDialogCadeau(cd?._id)"><span style="position:relative;bottom:5px;">Détail</span></button>-->

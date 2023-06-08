@@ -54,7 +54,7 @@ export class ResetPage implements OnInit {
 
       this.authService.validCode({code:this.code, phone:this.phone}).then(res=>{
         let response = <restResponse>res;
-        console.log(response);
+        //console.log(response);
         if(!response.success){
           this.formErrors['code1'].notfound=true;
           this.loadingDismiss("ifOfLoading");
@@ -88,9 +88,35 @@ export class ResetPage implements OnInit {
       .dismiss(null, null, loadingId)
       .then((response) =>{
         console.log("loading dismissed alves", response)
+
       }).catch((err) => {
         console.log("Erreur", err);
       });
+  }
+
+  refreshCode(){
+    let body={emailorphone:this.phone}
+
+    this.loadingPresent("ifOfLoading").then((res)=>{
+
+      this.authService.lostPassword(body).then((res:any)=>{
+        let response = <restResponse>res;
+        if(!response.success){
+          this.loadingDismiss("ifOfLoading");
+        }else{
+          this.loadingDismiss("ifOfLoading");
+        }
+        
+      }).catch(err=>{
+        this.loadingDismiss("ifOfLoading");
+        console.log("Error", err);
+      })
+
+    }).catch((err)=>{
+      this.loadingDismiss("ifOfLoading");
+    })
+
+    
   }
 
 }

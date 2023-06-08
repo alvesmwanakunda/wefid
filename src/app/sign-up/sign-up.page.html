@@ -135,16 +135,20 @@
       
 
 
-      <div *ngIf="ios">
+      <!--<div *ngIf="ios">
        <p class="text-barre" [routerLink]="'/login'"> <span>Se connecter avec</span></p>
+      </div>-->
+
+      <div>
+       <p class="text-barre" [routerLink]="'/login'"> <span>Vous avez déjà un compte?</span></p>
       </div>
 
-      <div *ngIf="android">
+      <!--<div *ngIf="android">
         <p class="text-barre"> <span>Vous avez déjà un compte? <small style="color: #2D8CF6;font-size: 13px;" [routerLink]="'/login'">connectez-vous</small></span> </p>
-       </div>
+       </div>-->
    
-      <div style="text-align: center;" *ngIf="ios">
-       <button mat-raised-button class="btnlogin"  [routerLink]="'/login'"><i class="fa-brands fa-apple" style="padding-bottom: 5px;font-size: 20px;"></i> Sign in with Apple</button>
+      <div style="text-align: center;">
+       <button mat-raised-button class="btnlogin"  [routerLink]="'/login'"><!--<i class="fa-brands fa-apple" style="padding-bottom: 5px;font-size: 20px;"></i>--> Connectez-vous</button>
       </div>
 
     </div><!--div-->

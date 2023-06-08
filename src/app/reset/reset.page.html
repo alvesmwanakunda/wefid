@@ -17,7 +17,7 @@
     </div>
   
     
-    <div style="font-size: 12px;text-align: center;">
+    <div style="font-size: 12px;text-align: center;margin-bottom: 20px;">
   
       <form [formGroup]="confirmphoneForm" novalidate>
   
@@ -41,20 +41,22 @@
           <p style="font-size: 12px;color:#d41750">le code saisi est incorrect</p>
           <br/>
         </div>
+
   
         <div>
           <!--<ion-button expand="block" type="submit" (click)="onCode()" [disabled]="confirmphoneForm.invalid">Valider</ion-button>-->
           <button mat-raised-button class="btn-log" type="submit" (click)="onCode()" [disabled]="confirmphoneForm.invalid">Valider</button>
-
       </div>
-  
       </form>
-  
+    </div>
+
+    <div>
+      <ion-text>
+        <p style="font-size: 13px;text-align: center;">Vous n’avez pas reçu de SMS?<span style="color: #10ae58;"> <button mat-button (click)="refreshCode()">Réessayer dans 30 s</button></span> </p>
+      </ion-text>
     </div>
   
-    <ion-text>
-      <p style="font-size: 12px;">Vous n’avez pas reçu de SMS?<span style="color: #10ae58;"> Réessayer dans 30 s</span> </p>
-    </ion-text>
+   
 
   </div><!--div-->
 

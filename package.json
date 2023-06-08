@@ -40,7 +40,7 @@
     "@ionic-native/status-bar": "^5.36.0",
     "@ionic/angular": "^6.0.0",
     "@ionic/cordova-builders": "^6.1.0",
-    "@ionic/lab": "^3.2.11",
+    "@ionic/lab": "^3.2.15",
     "@ng-bootstrap/ng-bootstrap": "^12.0.1",
     "angularx-qrcode": "^13.0.14",
     "bootstrap": "^5.1.3",
@@ -94,6 +94,7 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "mx.ferreyra.callnumber": "^0.0.2",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
@@ -116,7 +117,8 @@
       "mx.ferreyra.callnumber": {},
       "cordova-plugin-local-notification": {},
       "cordova-plugin-androidx-adapter": {},
-      "cordova-plugin-qrscanner": {}
+      "cordova-plugin-qrscanner": {},
+      "call-number": {}
     },
     "platforms": [
       "android",

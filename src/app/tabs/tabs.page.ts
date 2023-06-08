@@ -77,7 +77,20 @@ export class TabsPage implements OnInit {
 
   fabButtonClass(){
     //console.log("Keyboard ", this.keyboard.isVisible);
-    return this.platform.is('android') && this.keyboard.isVisible ? 'android-fab-button':'';
+
+    if (this.platform.is('ios')) {
+      const isKeyboardVisible = this.keyboard.isVisible;
+      //console.log('Le clavier est-il visible sur iOS ?', isKeyboardVisible);
+      return 'ios-fab-button';
+      // Actions à effectuer lorsque le clavier est visible sur iOS
+    } else if (this.platform.is('android')) {
+      const isKeyboardVisible = this.keyboard.isVisible;
+      //console.log('Le clavier est-il visible sur Android ?', isKeyboardVisible);
+      return 'android-fab-button';
+      // Actions à effectuer lorsque le clavier est visible sur Android
+    }
+    //return this.platform.is('android') && this.keyboard.isVisible ? 'android-fab-button':'';
+    //return this.platform.is('ios') && this.keyboard.isVisible ? 'ios-fab-button':'';
   }
 
 }

@@ -28,5 +28,9 @@ export class QrcodeService {
     return this.http.get(`${environment.BASE_API_URL}/qrcode/avoir/${idEncaisse}`)
   }
 
+  getQrPromotion(idPromotion){
+    return this.http.get(`${environment.BASE_API_URL}/qrcode/avoir/${idPromotion}`)
+  }
+
 
 }

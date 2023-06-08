@@ -243,9 +243,12 @@ export class EntreprisePage implements OnInit {
   }
 
   callNumbres(){
-    this.callNumber.callNumber(this.entreprise?.phone1, true)
-    .then(res => console.log('Launched dialer!', res))
-     .catch(err => console.log('Error launching dialer', err));
+    if(this.entreprise?.phone1){
+      this.callNumber.callNumber(this.entreprise?.phone1, true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+    }
+    
   }
 
   openDialogCadeauImage(idCadeau): void {

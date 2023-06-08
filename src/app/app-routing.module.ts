@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from './shared/interceptors/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -37,6 +38,7 @@ const routes: Routes = [
   },*/
   {
     path: 'tabs',
+    canActivate:[AuthGuardService],
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   },
   {
@@ -68,6 +70,10 @@ const routes: Routes = [
     loadChildren: () => import('./tabs-visite/tabs-visite.module').then( m => m.TabsVisitePageModule)
   },
   /*{
+    path: 'qrcode-promotion',
+    loadChildren: () => import('./qrcode-promotion/qrcode-promotion.module').then( m => m.QrcodePromotionPageModule)
+  },
+  {
     path: 'entreprise',
     loadChildren: () => import('./entreprise/entreprise.module').then( m => m.EntreprisePageModule)
   },

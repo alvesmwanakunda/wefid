@@ -74,7 +74,12 @@ export class InfosPage implements OnInit {
            this.user = res.message;
 
            if(this.user){
-            this.getAge(res.message.dateNaissance);
+            if(this.user.dateNaissance){
+              console.log("date anniversaire");
+              this.getAge(res.message.dateNaissance);
+            }else{
+                this.age=0
+            }
             this.user.dateNaissance = new Date(this.user?.dateNaissance).toISOString().split('T')[0];
             this.userForm = new FormGroup({
               nom:new FormControl(this.user?.user.nom,[Validators.required]),

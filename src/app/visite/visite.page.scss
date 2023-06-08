@@ -1,7 +1,7 @@
-ion-img::part(image){
-  //box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25) !important;
-  //border-radius: 10px !important;
-}
+/*ion-img::part(image){
+    //@function: 0px 4px 7px rgba(0, 0, 0, 0.25) !important;
+    //border-radius: 10px !important;
+}*/
 
 .example-full-width {
   width: 100%;
@@ -68,8 +68,10 @@ margin: 2px;
   font-weight: 500;
   font-size: 10px;
   color: #707073;
-  //line-height: 24px;
-  //color: #BDBDBD;
+  width: 100px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .dnumber{
@@ -146,14 +148,10 @@ ion-popover {
 }
 
 .img-header{
-  position: relative;
-  top: 10px;
-  width: 34px;
-  height: 32px;
-  float: right;
-  margin-right: 11px;
-}
-
-#myFixZone {
-  height: 200px;
+position: relative;
+top: 10px;
+width: 34px;
+height: 32px;
+float: right;
+margin-right: 11px;
 }

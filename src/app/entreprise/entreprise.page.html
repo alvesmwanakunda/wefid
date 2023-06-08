@@ -136,7 +136,9 @@
           <ion-list *ngIf="encaisses!=0">
             <ion-row *ngFor="let en of encaisses">
               <ion-col size="3">
-                <img src="data:image/png;base64,{{en?.entreprise?.image}}" class="imgproduit">
+                <img src="data:image/png;base64,{{en?.entreprise?.image}}" class="imgproduit" *ngIf="en?.entreprise?.image">
+                <img src="assets/images/icon.png" class="imgproduit" *ngIf="!en?.entreprise?.image">
+
               </ion-col>
               <ion-col size="9">
                 <ion-item>
@@ -156,7 +158,14 @@
       </mat-tab>
       <mat-tab label="Cadeaux">
         <div style="padding-top:20px;">
-          <ion-list>
+
+          <div class="ion-padding" align="center"  *ngIf="cadeaux==0">
+            <img src="assets/images/no.png" class="imgno"/>
+            <p style="font-size: 11px;text-align: center;">Vous ne disposez pas de points de fidélité pour ce commerce</p>
+            <br/><br/>
+          </div>
+
+          <ion-list *ngIf="cadeaux!=0">    
                  <ion-row *ngFor="let cd of cadeaux">
                     <ion-col size="3">
                       <img src="data:image/png;base64,{{cd?.produit?.photo}}" class="imgproduit" *ngIf="cd?.produit?.photo" (click)="openDialogCadeauImage(cd?._id)">
@@ -166,7 +175,8 @@
 
                       <ion-item>
                         <div>
-                          <p class="titleclient" *ngIf="cd?.produit?.nom">{{cd?.produit?.nom}}</p>
+                          <!--{{cd?.produit?.nom}} - -->
+                          <p class="titleclient" *ngIf="cd?.produit?.nom">{{cd?.typeCadeau}}</p>
                           <p class="titleclient" *ngIf="!cd?.produit?.nom">Livraison</p>
                           <span class="titleclientp">Disponible</span>
                         </div>

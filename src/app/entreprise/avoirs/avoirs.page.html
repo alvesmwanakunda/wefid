@@ -17,7 +17,7 @@
 
 <ion-content  [fullscreen]="true" class="ion-padding">
 
-  <div (click)="detailClient()">
+  <div (click)="detailClient()" style="padding-top: 25px">
     <button mat-stroked-button class="btn-back"><mat-icon style="color: #000000;">keyboard_arrow_left</mat-icon></button>
     <ion-text style="color:#323635;font-weight: 700;"><p class="txt-title">Mes avoirs</p></ion-text>
   </div>
@@ -77,7 +77,8 @@
                 <ion-grid>
                   <ion-row>
                     <ion-col>
-                      <img src="data:image/png;base64,{{dep?.entreprise?.image}}" class="imgproduit">
+                      <img src="data:image/png;base64,{{dep?.entreprise?.image}}" *ngIf="dep?.entreprise?.image" class="imgproduit">
+                      <img src="assets/images/icon.png" class="imgproduit" *ngIf="!dep?.entreprise?.image">
                     </ion-col>
                     <ion-col>
                       <div style="position: relative;bottom: 6px;">
@@ -105,7 +106,8 @@
                 <ion-grid>
                   <ion-row>
                     <ion-col>
-                      <img src="data:image/png;base64,{{en?.entreprise?.image}}" class="imgproduit">
+                      <img src="data:image/png;base64,{{en?.entreprise?.image}}" *ngIf="en?.entreprise?.image" class="imgproduit">
+                      <img src="assets/images/icon.png" class="imgproduit" *ngIf="!en?.entreprise?.image">
                     </ion-col>
                     <ion-col>
                       <div style="position: relative;bottom: 6px;">
