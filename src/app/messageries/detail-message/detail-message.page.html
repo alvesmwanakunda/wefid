@@ -45,7 +45,7 @@
               {{m?.message?.message}}
             </p>
             <p *ngIf="m?.message?.isCode" style="font-size:11px;color: #000000;">
-              Ce message contient un QR code de promotion,<button mat-button (click)="openQrcode(m?.message?._id)" style="font-size:11px;color: #000000;">Veuillez ouvrir le QR code</button> 
+              Ce message contient un QR code de promotion,<button mat-button (click)="openQrcode(m?._id)" style="font-size:11px;color: #000000;">Veuillez ouvrir le QR code</button> 
             </p>
           </ion-card-content>  
         </ion-card>
@@ -60,8 +60,14 @@
             <div *ngIf="m?.promotion?.photo">
               <img src="data:image/png;base64,{{m?.promotion?.photo}}">
             </div>
-            <p style="font-size:11px;color: #000000;" [innerHTML]="m?.promotion?.email">
+            <p style="font-size:11px;color: #000000;" *ngIf="m?.promotion?.email" [innerHTML]="m?.promotion?.email">
               {{m?.promotion?.email}}
+            </p>
+            <p style="font-size:11px;color: #000000;" *ngIf="m?.promotion?.sms">
+              {{m?.promotion?.sms}}
+            </p>
+            <p *ngIf="m?.message?.isCode" style="font-size:11px;color: #000000;">
+              Ce message contient un QR code de promotion,<button mat-button (click)="openQrcode(m._id)" style="font-size:11px;color: #000000;">Veuillez ouvrir le QR code</button> 
             </p>
           </ion-card-content>  
         </ion-card>
