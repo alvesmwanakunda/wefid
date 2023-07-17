@@ -29,6 +29,13 @@ export class TabsPage implements OnInit {
       this.getClient();
      })
   }
+  
+  ionViewWillEnter(){
+    this.notificationService.initSocket();
+    this.notificationService.onMessageAppVisite().subscribe((data:any)=>{
+      console.log('Nouveau message recu :', data);
+    })
+  }
 
   ngOnInit() {
 

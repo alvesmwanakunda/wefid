@@ -14,16 +14,24 @@ import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications
 import { registerLocaleData } from '@angular/common';
 import localFr from '@angular/common/locales/fr';
 import { LOCALE_ID } from '@angular/core';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment } from 'src/environments/environment';
 registerLocaleData(localFr, 'fr');
-
-
-//import { FirebaseX } from '@awesome-cordova-plugins/firebase-x/ngx';
+const config: SocketIoConfig={url:environment.BASE_API_URL, options:{}};
 import { FCM } from '@ionic-native/fcm/ngx';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule,BrowserAnimationsModule, IonicModule.forRoot(), AppRoutingModule,SharedModule,HttpClientModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule, 
+    SocketIoModule.forRoot(config),
+    IonicModule.forRoot(), 
+    AppRoutingModule,
+    SharedModule,
+    HttpClientModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,

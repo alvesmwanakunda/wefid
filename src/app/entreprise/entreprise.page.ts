@@ -73,6 +73,16 @@ export class EntreprisePage implements OnInit {
 
   }
 
+  ionViewWillEnter(){
+    this.notificationService.initSocket();
+    this.notificationService.onMessageVisite().subscribe((data:any)=>{
+      console.log('Nouveau message recu :', data);
+    });
+    this.notificationService.onMessageDepense().subscribe((data:any)=>{
+      console.log('Nouveau message recu depense :', data);
+    })
+  }
+
   ngOnInit() {
     this.notificationService.getMessageVisite().subscribe((res:any)=>{
        console.log("Socket Data", res);

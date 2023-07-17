@@ -20,7 +20,9 @@
     </div>
 
     <div class="headImg">
-      <ion-slides pager="false" [options]="slideOpts" touchEvents="false">
+      <ion-slides #slides pager="false" [options]="slideOpts"
+      (ionSlideTouchStart)="disableAutoplay()"
+      (ionSlideTouchEnd)="enableAutoplay()">
         <ion-slide>
           <ion-img src="assets/images/sl2.jpg"></ion-img>
         </ion-slide>

@@ -92,6 +92,7 @@ export class DetailMessagePage implements OnInit {
     this.isCurrentView = false;
   }
 
+
   openQrcode(idPromotion){
 
     const dialogRef = this.dialog.open(QrcodePromotionPage, {

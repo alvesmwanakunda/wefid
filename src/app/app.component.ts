@@ -7,6 +7,7 @@ import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications
 import { FCM } from '@ionic-native/fcm/ngx';
 import { IonRouterOutlet } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Socket } from 'socket.io-client';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
   private displayWarning:boolean;
   subscriptions: Subscription = new Subscription()
   @ViewChild(IonRouterOutlet) routerOutlet: IonRouterOutlet;
+  private socket: Socket;
 
 
   constructor(
@@ -28,7 +30,7 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private localNotifications: LocalNotifications,
     private fcm: FCM,
-    private router:Router
+    private router:Router,
   ) {
       this.initializeApp(); 
       this.subscriptions.add(
@@ -46,9 +48,12 @@ export class AppComponent implements OnInit {
       }else{
         this.router.navigate(['/login']);
       }
+
+      //this.socket = io(http://localhost:5000')
   } 
 
   ngOnInit(): void {
+    this.routerOutlet.swipeGesture=false;
   }
 
   simpleNotif(){

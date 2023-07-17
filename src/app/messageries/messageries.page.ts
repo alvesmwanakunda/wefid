@@ -53,7 +53,8 @@ export class MessageriesPage implements OnInit {
       this.getClient();
      })
 
-   }
+  }
+
 
   ngOnInit() {
     this.getClient();
@@ -97,6 +98,13 @@ export class MessageriesPage implements OnInit {
 
   ionViewWillLeave(){
     this.isCurrentView = false;
+  }
+
+  ionViewWillEnter(){
+    this.notificationService.initSocket();
+    this.notificationService.onMessageAppVisite().subscribe((data:any)=>{
+      console.log('Nouveau message recu :', data);
+    })
   }
 
   async presentModal(idEntreprise) {

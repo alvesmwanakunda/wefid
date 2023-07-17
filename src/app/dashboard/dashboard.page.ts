@@ -10,6 +10,8 @@ import { Platform } from '@ionic/angular';
 import { ClientService } from '../shared/services/client.service';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 import { AuthService } from '../shared/services/auth.service';
+import { IonSlides } from '@ionic/angular';
+
 
 
 
@@ -24,13 +26,23 @@ export class DashboardPage implements OnInit {
   //desactive button back
   private isCurrentView:boolean;
   private displayWarning:boolean;
-  subscriptions: Subscription = new Subscription()
+  subscriptions: Subscription = new Subscription();
+  @ViewChild('slides', { static: true }) slides: IonSlides;
 
-  slideOpts={
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400,
+    autoplay: {
+      delay: 2000,
+    },
+    loop: true,
+  };
+
+  /*slideOpts={
     initialSlide:0,
     speed:500,
     autoplay:true
-  };
+  };*/
   slideOpt={
     initialSlide:0,
   };
@@ -73,13 +85,7 @@ export class DashboardPage implements OnInit {
 
   ngOnInit() {
 
-    this.getEntreprise();
     this.getOperations();
-    /*if(this.refreshToken){
-      this.authService.refreshToken(this.refreshToken).subscribe((response:any)=>{
-        this.authService.setAccessToken(response.accessToken);
-      });
-    };*/
   }
 
   getUser(){
@@ -92,21 +98,7 @@ export class DashboardPage implements OnInit {
     })
   }
 
-  getEntreprise(){
-    this.entrepriseService.getAllEntreprise().subscribe((res:any)=>{
-      try {
-          console.log("Entreprises", res.message);
-          this.entreprises = res.message;
-          /*if(this.entreprises.lenght>=1){
-            this.isEntreprise=true;
-          }*/
-      } catch (error) {
-        console.log("Erreur", error);
-      }
-
-    })
-  }
-
+ 
   getOperations(){
     this.entrepriseService.getAllEntrepriseByClient().subscribe((res:any)=>{
       try {
@@ -211,8 +203,6 @@ export class DashboardPage implements OnInit {
     console.log('Begin async operation');
     setTimeout(() => {
       console.log('Async operation has ended');
-      this.getUser();
-      this.getEntreprise();
       this.getOperations();
       event.target.complete();
     }, 200);
@@ -266,6 +256,14 @@ export class DashboardPage implements OnInit {
       }
       
     },2000);
+  }
+
+  disableAutoplay() {
+    this.slides.stopAutoplay();
+  }
+
+  enableAutoplay() {
+    this.slides.startAutoplay();
   }
 
 }
